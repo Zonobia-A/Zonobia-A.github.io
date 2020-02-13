@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>如何搭建github-page</title>
+    <url>/2020/02/09/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BAgithub-page/</url>
+    <content><![CDATA[<p>最近有想法搭建自己的blog，主要用来记录自己的学习，又苦于没有服务器，因此选择在Github上搭建自己博客。看了半天教程，踩了不少坑，总结一套比较适用新手的方法。（纯小白）</p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
+<li>Git账号注册</li>
+<li>新建仓库</li>
+<li>仓库属性配置</li>
+<li>访问方式</li>
+</ul>
+<h5 id="git下载"><a href="#git下载" class="headerlink" title="git下载"></a>git下载</h5><p>首先需要一个Github账号，<a href="https://github.com/" target="_blank" rel="noopener">github官网</a>注册属于自己的Github账号。GitHub作为全球最大的程序员交友网站，是一个代码托管平台和开发者社区，开发者可以在Github上创建自己的开源项目并与其他开发者协作编码，有了Github账号，我们就可以在clone的道路上越走越远。</p>
+<p><img src="https://i.loli.net/2020/02/09/LkcOu924BrXonGy.png" alt="image-20200209142944276.png"></p>
+<hr>
+<h5 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h5><ol>
+<li>首先新建一个Repositories（项目），</li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/09/QrCS3jODFsTcot5.png" alt="image-20200209143606868.png"></p>
+<ol start="2">
+<li>千万注意项目名称命名为<strong>你的名字.github.io</strong>，然后点击create </li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/09/Vf7ZOPeguWLdXx8.png" alt="image-20200209145106208.png"></p>
+<hr>
+<h5 id="仓库属性配置"><a href="#仓库属性配置" class="headerlink" title="仓库属性配置"></a>仓库属性配置</h5><ol>
+<li>进入settings，确保名字是<strong>* Git_id.github.io *</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/09/s9KlVN2OGbrfRce.png" alt="image-20200209145305495.png"></p>
+<ol start="2">
+<li>然后往下拉找到<strong><em>GitHub Pages</em></strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/09/cspR46TCamArzfU.png" alt="image-20200209145747750.png"></p>
+<ol start="3">
+<li>选择theme</li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/09/tdkMXxLgNb7YZKH.png" alt="image-20200209145929455.png"></p>
+<ol start="4">
+<li>填上描述，commit修改即可（可以不填）</li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/09/IMfNCEZsgAcWPj2.png" alt="image-20200209150112237.png"></p>
+<hr>
+<h5 id="访问方式"><a href="#访问方式" class="headerlink" title="访问方式"></a>访问方式</h5><p><img src="https://i.loli.net/2020/02/09/dKkDH3PjeGc7nrp.png" alt="image-20200209150251311.png"></p>
+<hr>
+<h5 id="配置成功"><a href="#配置成功" class="headerlink" title="配置成功"></a>配置成功</h5><p><img src="https://i.loli.net/2020/02/09/cO8EtNFH2mTeRuA.png" alt="image-20200209174132616.png"></p>
+]]></content>
+      <categories>
+        <category>互联网</category>
+      </categories>
+      <tags>
+        <tag>互联网</tag>
+      </tags>
+  </entry>
+</search>
