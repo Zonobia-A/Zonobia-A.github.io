@@ -538,6 +538,9 @@
           
 
   
+    <div id="gitalk-container"></div>
+
+  
 
 
 
@@ -897,6 +900,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'a7ef9cb22eccfbf3364e',
+          clientSecret: 'bbdfdc128bf6f534715fb3ebad5d1dc6fc0c9e3e',
+          repo: 'zonobia-a.github.io',
+          owner: 'Zonobia-A',
+          admin: [''],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
