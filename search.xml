@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>用hexo and NexT主题搭建个人主页</title>
-    <url>/2020/02/13/%E7%94%A8hexo-and-NexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>互联网</category>
-      </categories>
-      <tags>
-        <tag>互联网</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何搭建github-page</title>
     <url>/2020/02/09/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BAgithub-page/</url>
     <content><![CDATA[<p>最近有想法搭建自己的blog，主要用来记录自己的学习，又苦于没有服务器，因此选择在Github上搭建自己博客。看了半天教程，踩了不少坑，总结一套比较适用新手的方法。（纯小白）</p>
