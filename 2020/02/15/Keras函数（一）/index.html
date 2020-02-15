@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="keras," />
 
 
 
@@ -105,15 +105,16 @@
 
 
 
-<meta name="description" content="关于为何搭建这个blog 为了锻炼自己写点东西的能力。 为了能在自己苦逼的生活中获得一丝乐趣。 由于经常看写论文学习一些代码，看了容易忘，因此需要一个属于自己的平台记录。 也为了跟所有人分享自己的一些心得，clone路上踩过的诸多大坑。也是一个大家分享交流的地方。  本人的现状鄙人不才，现于一所不知名大学攻读计算机硕士，本科阶段的专业是计算机科学与技术，虽是学计算机但对计算机知识也只是略懂皮毛。也">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="https://zonobia-a.github.io/about/index.html">
+<meta name="description" content="Lambda层 || reverse函数 || permute_dimensions函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keras函数（一）">
+<meta property="og:url" content="https://zonobia-a.github.io/2020/02/15/Keras%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Zenobia">
-<meta property="og:description" content="关于为何搭建这个blog 为了锻炼自己写点东西的能力。 为了能在自己苦逼的生活中获得一丝乐趣。 由于经常看写论文学习一些代码，看了容易忘，因此需要一个属于自己的平台记录。 也为了跟所有人分享自己的一些心得，clone路上踩过的诸多大坑。也是一个大家分享交流的地方。  本人的现状鄙人不才，现于一所不知名大学攻读计算机硕士，本科阶段的专业是计算机科学与技术，虽是学计算机但对计算机知识也只是略懂皮毛。也">
-<meta property="article:published_time" content="2020-02-13T11:23:17.000Z">
-<meta property="article:modified_time" content="2020-02-13T16:34:12.895Z">
+<meta property="og:description" content="Lambda层 || reverse函数 || permute_dimensions函数">
+<meta property="article:published_time" content="2020-02-15T10:49:26.000Z">
+<meta property="article:modified_time" content="2020-02-15T16:56:49.031Z">
 <meta property="article:author" content="Feng Yuan">
+<meta property="article:tag" content="keras">
 <meta name="twitter:card" content="summary">
 
 
@@ -144,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="https://zonobia-a.github.io/about/"/>
+  <link rel="canonical" href="https://zonobia-a.github.io/2020/02/15/Keras函数（一）/"/>
 
 
 
 
 
-  <title>关于我 | Zenobia</title>
+  <title>Keras函数（一） | Zenobia</title>
   
 
 
@@ -310,49 +311,237 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zonobia-a.github.io/2020/02/15/Keras%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Feng Yuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zenobia">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">关于我</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h3 id="关于为何搭建这个blog"><a href="#关于为何搭建这个blog" class="headerlink" title="关于为何搭建这个blog"></a>关于为何搭建这个blog</h3><ul>
-<li>为了锻炼自己写点东西的能力。</li>
-<li>为了能在自己苦逼的生活中获得一丝乐趣。</li>
-<li>由于经常看写论文学习一些代码，看了容易忘，因此需要一个属于自己的平台记录。</li>
-<li>也为了跟所有人分享自己的一些心得，clone路上踩过的诸多大坑。也是一个大家分享交流的地方。</li>
-</ul>
-<h3 id="本人的现状"><a href="#本人的现状" class="headerlink" title="本人的现状"></a>本人的现状</h3><p>鄙人不才，现于一所不知名大学攻读计算机硕士，本科阶段的专业是计算机科学与技术，虽是学计算机但对计算机知识也只是略懂皮毛。也是由于缺乏知识储备，缺乏学习经验，自我认为完全没有达到个人的预期，因此我选择了继续攻读硕士研究生。研究生阶段研究的是视频编码以及计算机视觉方向，制作这个博客以来确实是能分享自己学习的新的，其实看的人可能也不是很多，重要的是记录下自己成长的轨迹。我认为用这种形式记录下我的成长对于一个学计算机专业的人已足够浪漫！</p>
-<h3 id="以后更新的内容"><a href="#以后更新的内容" class="headerlink" title="以后更新的内容"></a>以后更新的内容</h3><ul>
-<li>由于自己专业的缘故，会经常更新看到的相关论文；</li>
-<li>因为后面工作做的事视频编码和计算机视觉方向，会更新C++以及Python的相关经验。同时会经常更新视频编码标准的代码注解。</li>
-<li>本人对前端的知识非常感兴趣，后面不会经常更新但会有一些前端知识。当然如果能做一个全栈最好了。</li>
-</ul>
-<h3 id="交流分享"><a href="#交流分享" class="headerlink" title="交流分享"></a>交流分享</h3><p>如果你们研究跟我相同的方向，或者志同道合，喜欢玩代码的都可以跟我交流，学不学得到什么不重要，交个朋友才是最重要的。</p>
-<p>QQ: 1296797885</p>
-<p>微信: lo_boss19960331</p>
-<p>e-mail: <a href="mailto:lo_bossYf@126.com">lo_bossYf@126.com</a> || QQ邮箱</p>
-
+          <h1 class="post-title" itemprop="name headline">Keras函数（一）</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T18:49:26+08:00">
+                2020-02-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T00:56:49+08:00">
+                2020-02-16
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  351
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>Lambda层 || reverse函数 || permute_dimensions函数<a id="more"></a></p>
+<h3 id="Lambda层"><a href="#Lambda层" class="headerlink" title="Lambda层"></a>Lambda层</h3><p>知道lambda层首先需要知道一个函数lambda函数，lambda函数又称匿名函数。如果你要实现的业务逻辑很简单，比如说简单的a+b，那就无需定义函数名。如下例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x, y: x+y</span><br></pre></td></tr></table></figure>
+
+<p>x和y表示函数的参数，冒号后面的x+y则是函数的业务逻辑，也是函数的输出。类似于如上简单的加法，你一眼就能看得出来，因此我们可以使用lambda函数定义。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>add = <span class="keyword">lambda</span> x, y : x+y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>add</span><br><span class="line">&lt;function &lt;<span class="keyword">lambda</span>&gt; at <span class="number">0x102bc2140</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>add(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你只是想对流经该层的数据做个变换，而这个变换本身没有什么需要学习的参数，那么直接用Lambda层是最合适的了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.core.Lambda(function, output_shape=<span class="literal">None</span>, mask=<span class="literal">None</span>, arguments=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>function：要实现的函数，该函数仅接受一个变量，即上一层的输出</p>
+<p>output_shape：函数应该返回的值的shape，可以是一个tuple，也可以是一个根据输入shape计算输出shape的函数</p>
+<p>mask: 掩膜</p>
+<p>arguments：可选，字典，用来记录向函数中传递的其他关键字参数</p>
+<h3 id="reverse函数"><a href="#reverse函数" class="headerlink" title="reverse函数"></a>reverse函数</h3><p>tf.keras.backend.reverse(x, axes) 沿指定轴反转张量</p>
+<p>x: 要反转的张量</p>
+<p>axes：整数或整数迭代。要反转的轴</p>
+<h3 id="permute-dimensions函数"><a href="#permute-dimensions函数" class="headerlink" title="permute_dimensions函数"></a>permute_dimensions函数</h3>
       
     </div>
     
     
     
+
+    
+      <div>
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Feng Yuan 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/keras/" rel="tag"># keras</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/14/hexo-NexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E7%BE%8E%E8%A7%82%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="hexo + NexT主题搭建美观的个人主页（一）">
+                <i class="fa fa-chevron-left"></i> hexo + NexT主题搭建美观的个人主页（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -507,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于为何搭建这个blog"><span class="nav-number">1.</span> <span class="nav-text">关于为何搭建这个blog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本人的现状"><span class="nav-number">2.</span> <span class="nav-text">本人的现状</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以后更新的内容"><span class="nav-number">3.</span> <span class="nav-text">以后更新的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交流分享"><span class="nav-number">4.</span> <span class="nav-text">交流分享</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda层"><span class="nav-number">1.</span> <span class="nav-text">Lambda层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reverse函数"><span class="nav-number">2.</span> <span class="nav-text">reverse函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#permute-dimensions函数"><span class="nav-number">3.</span> <span class="nav-text">permute_dimensions函数</span></a></li></ol></div>
             
 
           </div>

@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Keras函数（一）</title>
+    <url>/2020/02/15/Keras%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>Lambda层 || reverse函数 || permute_dimensions函数<a id="more"></a></p>
+<h3 id="Lambda层"><a href="#Lambda层" class="headerlink" title="Lambda层"></a>Lambda层</h3><p>知道lambda层首先需要知道一个函数lambda函数，lambda函数又称匿名函数。如果你要实现的业务逻辑很简单，比如说简单的a+b，那就无需定义函数名。如下例子</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x, y: x+y</span><br></pre></td></tr></table></figure>
+
+<p>x和y表示函数的参数，冒号后面的x+y则是函数的业务逻辑，也是函数的输出。类似于如上简单的加法，你一眼就能看得出来，因此我们可以使用lambda函数定义。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>add = <span class="keyword">lambda</span> x, y : x+y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>add</span><br><span class="line">&lt;function &lt;<span class="keyword">lambda</span>&gt; at <span class="number">0x102bc2140</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>add(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你只是想对流经该层的数据做个变换，而这个变换本身没有什么需要学习的参数，那么直接用Lambda层是最合适的了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">keras.layers.core.Lambda(function, output_shape=<span class="literal">None</span>, mask=<span class="literal">None</span>, arguments=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>function：要实现的函数，该函数仅接受一个变量，即上一层的输出</p>
+<p>output_shape：函数应该返回的值的shape，可以是一个tuple，也可以是一个根据输入shape计算输出shape的函数</p>
+<p>mask: 掩膜</p>
+<p>arguments：可选，字典，用来记录向函数中传递的其他关键字参数</p>
+<h3 id="reverse函数"><a href="#reverse函数" class="headerlink" title="reverse函数"></a>reverse函数</h3><p>tf.keras.backend.reverse(x, axes) 沿指定轴反转张量</p>
+<p>x: 要反转的张量</p>
+<p>axes：整数或整数迭代。要反转的轴</p>
+<h3 id="permute-dimensions函数"><a href="#permute-dimensions函数" class="headerlink" title="permute_dimensions函数"></a>permute_dimensions函数</h3>]]></content>
+      <tags>
+        <tag>keras</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo + NexT主题搭建美观的个人主页（一）</title>
     <url>/2020/02/14/hexo-NexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E7%BE%8E%E8%A7%82%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p>本篇将使用hexo工具加Next主题初步搭建一个blog，hexo能极大的加速你的blog的搭建，无需HTML，CSS，JS等基础知识，上手迅速。同时，当你使用过NexT主题之后，你一定会深深地爱上她。<a id="more"></a></p>
