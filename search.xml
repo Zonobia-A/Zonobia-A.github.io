@@ -21,6 +21,9 @@
 <p>x: 要反转的张量</p>
 <p>axes：整数或整数迭代。要反转的轴</p>
 <h3 id="permute-dimensions函数"><a href="#permute-dimensions函数" class="headerlink" title="permute_dimensions函数"></a>permute_dimensions函数</h3>]]></content>
+      <categories>
+        <category>keras</category>
+      </categories>
       <tags>
         <tag>keras</tag>
       </tags>
