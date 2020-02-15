@@ -52,6 +52,9 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli 安装hexo</span><br><span class="line">hexo init 建立站点文件夹</span><br><span class="line">hexo server [p] 在本地进行演示</span><br><span class="line">hexo generate 生成public文件夹</span><br><span class="line">hexo deploy 将博客打包上传到github</span><br><span class="line">hexo clean 清除本地缓存文件</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>互联网</category>
+      </categories>
       <tags>
         <tag>互联网</tag>
       </tags>
