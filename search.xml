@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>深度学习特征可视化</title>
+    <url>/2020/02/23/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%89%B9%E5%BE%81%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
+    <content><![CDATA[<p>训练好的模型进行特征可视化<a id="more"></a></p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>论文复现（一）</title>
     <url>/2020/02/16/%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h3 id="Low-Light-Image-Enhancement-via-a-Deep-Hybrid-Network"><a href="#Low-Light-Image-Enhancement-via-a-Deep-Hybrid-Network" class="headerlink" title="Low-Light Image Enhancement via a Deep Hybrid Network"></a>Low-Light Image Enhancement via a Deep Hybrid Network<a id="more"></a></h3><p>最近做图像增强方面的研究，看到了一篇2019年的TIP文章<a href="https://ieeexplore.ieee.org/document/8692732" target="_blank" rel="noopener">low-light image enhacement via a deep hybrid network</a>，为了看看真正的结果，我在DPED数据集上进行了测试。论文采用了生成对抗网络的结构，但是生成器仅仅给了网络结构图，判别器倒是给了具体的参数，因此我仅给出生成器的复现。基于的是tensorflow平台。</p>
