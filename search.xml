@@ -57,7 +57,7 @@
   <entry>
     <title>Keras函数（一）</title>
     <url>/2020/02/15/Keras%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>Lambda层 || reverse函数 || permute_dimensions函数<a id="more"></a></p>
+    <content><![CDATA[<p>Lambda层 || reverse函数<a id="more"></a></p>
 <h3 id="Lambda层"><a href="#Lambda层" class="headerlink" title="Lambda层"></a>Lambda层</h3><p>知道lambda层首先需要知道一个函数lambda函数，lambda函数又称匿名函数。如果你要实现的业务逻辑很简单，比如说简单的a+b，那就无需定义函数名。如下例子</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x, y: x+y</span><br></pre></td></tr></table></figure>
 
@@ -74,7 +74,7 @@
 <h3 id="reverse函数"><a href="#reverse函数" class="headerlink" title="reverse函数"></a>reverse函数</h3><p>tf.keras.backend.reverse(x, axes) 沿指定轴反转张量</p>
 <p>x: 要反转的张量</p>
 <p>axes：整数或整数迭代。要反转的轴</p>
-<h3 id="permute-dimensions函数"><a href="#permute-dimensions函数" class="headerlink" title="permute_dimensions函数"></a>permute_dimensions函数</h3>]]></content>
+]]></content>
       <categories>
         <category>keras</category>
       </categories>
