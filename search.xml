@@ -3,14 +3,22 @@
   <entry>
     <title>tensorflow实现sobel梯度算法</title>
     <url>/2020/02/28/tensorflow%E5%AE%9E%E7%8E%B0sobel%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="tensorflow中使用sobel算子对-bs-h-w-c-的图像梯度"><a href="#tensorflow中使用sobel算子对-bs-h-w-c-的图像梯度" class="headerlink" title="tensorflow中使用sobel算子对[bs , h, w, c]的图像梯度"></a>tensorflow中使用sobel算子对[bs , h, w, c]的图像梯度<a id="more"></a></h4><h3 id="Sobel-算子介绍"><a href="#Sobel-算子介绍" class="headerlink" title="Sobel 算子介绍"></a>Sobel 算子介绍</h3><p>水平方向梯度算子：<br>$$<br>G_x = \left[<br>\matrix{<br>  -1 &amp; 0 &amp; 1\<br>  -2 &amp; 0 &amp; 2\<br>  -1 &amp; 0 &amp; 1<br>}<br>\right]<br>$$<br>竖直方向梯度算子：<br>$$<br>G_y = \left[<br>\matrix{<br>  -1 &amp; -2 &amp; -1\<br>  0 &amp; 0 &amp; 0\<br>  1 &amp; 2 &amp; 1<br>}<br>\right]<br>$$<br>图像梯度计算：<br>$$<br>G=\sqrt{G_x^2 + G_y^2 }<br>$$<br>如何使用算子计算图像梯度：<br>$$<br>G_x = (-1)<em>f(x-1, y-1) + 0</em>f(x,y-1) + 1<em>f(x+1,y-1)\+(-2)</em>f(x-1,y) + 0<em>f(x,y)+2</em>f(x+1,y)\+(-1)<em>f(x-1,y+1) + 0</em>f(x,y+1) + 1<em>f(x+1,y+1)\= [f(x+1,y-1)+2</em>f(x+1,y)+f(x+1,y+1)]-[f(x-1,y-1)+2*f(x-1,y)+f(x-1,y+1)]<br>$$</p>
-<p>$$<br>Gy =1* f(x-1, y-1) + 2<em>f(x,y-1)+ 1</em>f(x+1,y-1)\+0<em>f(x-1,y) 0</em>f(x,y) + 0<em>f(x+1,y)\ +(-1)</em>f(x-1,y+1) + (-2)<em>f(x,y+1) + (-1)</em>f(x+1, y+1)\= [f(x-1,y-1) + 2<em>f(x,y-1) + f(x+1,y-1)]-[f(x-1, y+1) + 2</em>f(x,y+1)+f(x+1,y+1)]<br>$$</p>
+    <content><![CDATA[<p>tensorflow中使用sobel算子对[bs , h, w, c]的图像梯度<a id="more"></a></p>
+<h3 id="Sobel-算子介绍"><a href="#Sobel-算子介绍" class="headerlink" title="Sobel 算子介绍"></a>Sobel 算子介绍</h3><p>水平方向梯度算子：</p>
+<p><img src="https://i.loli.net/2020/02/28/sYzToZg275qiWvN.png" alt="1.jpg"></p>
+<p>竖直方向梯度算子：</p>
+<p><img src="https://i.loli.net/2020/02/28/rum9Cl3RNpGkKOs.png" alt="2.jpg"></p>
+<p>图像梯度计算：</p>
+<p><img src="https://i.loli.net/2020/02/28/G3ZJPzpF9fgkhwx.png" alt="3.jpg"></p>
+<p>如何使用算子计算图像梯度：</p>
+<p><img src="https://i.loli.net/2020/02/28/atMGXZISuPkUdA6.png" alt="4.jpg"></p>
+<p><img src="https://i.loli.net/2020/02/28/WtuQeJzjZgoanr2.png" alt="5.jpg"></p>
 <p>其中f(a,b), 表示图像(a,b)点的灰度值</p>
 <h3 id="tensorflow中使用sobel算子计算梯度"><a href="#tensorflow中使用sobel算子计算梯度" class="headerlink" title="tensorflow中使用sobel算子计算梯度"></a>tensorflow中使用sobel算子计算梯度</h3><p>需要的包：</p>
-<ol>
-<li><p>tensorflow</p>
-<pre><code>2. numpy</code></pre></li>
-</ol>
+<ul>
+<li>tensorflow</li>
+<li>numpy</li>
+</ul>
 <p>tensorflow实现函数：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sobel</span><span class="params">(input)</span>:</span></span><br><span class="line">    input_gray = tf.image.rgb_to_grayscale(input)</span><br><span class="line">    bs, w, h, c = input_gray.shape</span><br><span class="line">    Gx = np.float32(np.array([[<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>], [<span class="number">-2</span>, <span class="number">0</span>, <span class="number">2</span>], [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]]))</span><br><span class="line">    Gy = np.float32(np.array([[<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-1</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>]]))</span><br><span class="line">    Gx = tf.expand_dims(Gx, axis=<span class="number">2</span>)</span><br><span class="line">    Gx = tf.expand_dims(Gx, axis=<span class="number">3</span>)</span><br><span class="line">    Gy = tf.expand_dims(Gy, axis=<span class="number">2</span>)</span><br><span class="line">    Gy = tf.expand_dims(Gy, axis=<span class="number">3</span>)</span><br><span class="line">    x = tf.nn.conv2d(input_gray, Gx, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">"SAME"</span>, name=<span class="string">"hor"</span>)</span><br><span class="line">    y = tf.nn.conv2d(input_gray, Gy, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">"SAME"</span>, name=<span class="string">"vec"</span>)</span><br><span class="line">    G = tf.sqrt(tf.square(x) + tf.square(y))</span><br><span class="line">    <span class="keyword">return</span> G</span><br></pre></td></tr></table></figure>
 
