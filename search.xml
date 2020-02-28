@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>tensorflow实现sobel梯度算法</title>
+    <url>/2020/02/28/tensorflow%E5%AE%9E%E7%8E%B0sobel%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="tensorflow中使用sobel算子对-bs-h-w-c-的图像梯度"><a href="#tensorflow中使用sobel算子对-bs-h-w-c-的图像梯度" class="headerlink" title="tensorflow中使用sobel算子对[bs , h, w, c]的图像梯度"></a>tensorflow中使用sobel算子对[bs , h, w, c]的图像梯度<a id="more"></a></h4><h3 id="Sobel-算子介绍"><a href="#Sobel-算子介绍" class="headerlink" title="Sobel 算子介绍"></a>Sobel 算子介绍</h3><p>水平方向梯度算子：<br>$$<br>G_x = \left[<br>\matrix{<br>  -1 &amp; 0 &amp; 1\<br>  -2 &amp; 0 &amp; 2\<br>  -1 &amp; 0 &amp; 1<br>}<br>\right]<br>$$<br>竖直方向梯度算子：<br>$$<br>G_y = \left[<br>\matrix{<br>  -1 &amp; -2 &amp; -1\<br>  0 &amp; 0 &amp; 0\<br>  1 &amp; 2 &amp; 1<br>}<br>\right]<br>$$<br>图像梯度计算：<br>$$<br>G=\sqrt{G_x^2 + G_y^2 }<br>$$<br>如何使用算子计算图像梯度：<br>$$<br>G_x = (-1)<em>f(x-1, y-1) + 0</em>f(x,y-1) + 1<em>f(x+1,y-1)\+(-2)</em>f(x-1,y) + 0<em>f(x,y)+2</em>f(x+1,y)\+(-1)<em>f(x-1,y+1) + 0</em>f(x,y+1) + 1<em>f(x+1,y+1)\= [f(x+1,y-1)+2</em>f(x+1,y)+f(x+1,y+1)]-[f(x-1,y-1)+2*f(x-1,y)+f(x-1,y+1)]<br>$$</p>
+<p>$$<br>Gy =1* f(x-1, y-1) + 2<em>f(x,y-1)+ 1</em>f(x+1,y-1)\+0<em>f(x-1,y) 0</em>f(x,y) + 0<em>f(x+1,y)\ +(-1)</em>f(x-1,y+1) + (-2)<em>f(x,y+1) + (-1)</em>f(x+1, y+1)\= [f(x-1,y-1) + 2<em>f(x,y-1) + f(x+1,y-1)]-[f(x-1, y+1) + 2</em>f(x,y+1)+f(x+1,y+1)]<br>$$</p>
+<p>其中f(a,b), 表示图像(a,b)点的灰度值</p>
+<h3 id="tensorflow中使用sobel算子计算梯度"><a href="#tensorflow中使用sobel算子计算梯度" class="headerlink" title="tensorflow中使用sobel算子计算梯度"></a>tensorflow中使用sobel算子计算梯度</h3><p>需要的包：</p>
+<ol>
+<li><p>tensorflow</p>
+<pre><code>2. numpy</code></pre></li>
+</ol>
+<p>tensorflow实现函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sobel</span><span class="params">(input)</span>:</span></span><br><span class="line">    input_gray = tf.image.rgb_to_grayscale(input)</span><br><span class="line">    bs, w, h, c = input_gray.shape</span><br><span class="line">    Gx = np.float32(np.array([[<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>], [<span class="number">-2</span>, <span class="number">0</span>, <span class="number">2</span>], [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]]))</span><br><span class="line">    Gy = np.float32(np.array([[<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-1</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>]]))</span><br><span class="line">    Gx = tf.expand_dims(Gx, axis=<span class="number">2</span>)</span><br><span class="line">    Gx = tf.expand_dims(Gx, axis=<span class="number">3</span>)</span><br><span class="line">    Gy = tf.expand_dims(Gy, axis=<span class="number">2</span>)</span><br><span class="line">    Gy = tf.expand_dims(Gy, axis=<span class="number">3</span>)</span><br><span class="line">    x = tf.nn.conv2d(input_gray, Gx, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">"SAME"</span>, name=<span class="string">"hor"</span>)</span><br><span class="line">    y = tf.nn.conv2d(input_gray, Gy, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">"SAME"</span>, name=<span class="string">"vec"</span>)</span><br><span class="line">    G = tf.sqrt(tf.square(x) + tf.square(y))</span><br><span class="line">    <span class="keyword">return</span> G</span><br></pre></td></tr></table></figure>
+
+<p><strong>Tips：</strong></p>
+<p><strong>1. 使用tf.nn.conv2d函数时，必须保证input和filter的数据类型一致。</strong></p>
+<p><strong>2.卷积操作时，input数据需是[bs, h, w, c]的形式，filter需是[ks, ks, in, out]的形式</strong></p>
+<p>编写中掌握的函数：</p>
+<ol>
+<li><p>np.repeat()</p>
+<p>该函数能复制数值，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gx = np.array([[<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">               [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">               [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>]])</span><br><span class="line"><span class="comment"># gx 的维度是（3，3）</span></span><br><span class="line">gx = np.repeat(gx, <span class="number">2</span>, axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 该函数能使gx 在0维度上复制两次，变成(2, 3, 3)维度的数值，且gx[0] = gx[1]</span></span><br><span class="line">print(gx.shape)</span><br><span class="line"><span class="comment"># gx 的维度是（2，3，3）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>np.float32()</p>
+<p>该函数能将括号内的数组变成float32类型</p>
+</li>
+<li><p>tf.squeeze()</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">squeeze(</span><br><span class="line">    input,</span><br><span class="line">    axis=<span class="literal">None</span>,</span><br><span class="line">    name=<span class="literal">None</span>,</span><br><span class="line">    squeeze_dims=<span class="literal">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>这个函数能删除axis指定的为1的维度，比如数据a是[bs, h, w, 1]，此时使用tf.squeeze(a, axis=-1)，则数据a会变成[bs, h, w]</p>
+</li>
+<li><p>tf.expand_dims()</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tf.expand_dims(</span><br><span class="line">    input,</span><br><span class="line">    axis=<span class="literal">None</span>,</span><br><span class="line">    name=<span class="literal">None</span>,</span><br><span class="line">    dim=<span class="literal">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>他所实现的功能是给定一个input，在axis轴处给input增加一个为1的维度。举个例子：一个[bs, h, w]的数据a，使用tf.expand_dims(a, axis=-1)，则可以使a变成[bs, h, w, 1]的数据。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>tensorflow</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>深度学习特征可视化</title>
     <url>/2020/02/23/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%89%B9%E5%BE%81%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
     <content><![CDATA[<p>训练好的模型进行特征可视化<a id="more"></a></p>
