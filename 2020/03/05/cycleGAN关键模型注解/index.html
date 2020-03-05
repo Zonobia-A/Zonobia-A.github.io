@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="深度学习," />
 
 
 
@@ -105,12 +105,23 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zenobia">
-<meta property="og:url" content="https://zonobia-a.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.html">
+<meta name="description" content="cycleGAN网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cycleGAN关键模型注解">
+<meta property="og:url" content="https://zonobia-a.github.io/2020/03/05/cycleGAN%E5%85%B3%E9%94%AE%E6%A8%A1%E5%9E%8B%E6%B3%A8%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Zenobia">
+<meta property="og:description" content="cycleGAN网络">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/NwiCp7AfWrRedcE.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/iRArHzWZuTyf2q4.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/XuIYinxh14KBAVC.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/ElyKoFmOJXHZgue.png">
+<meta property="og:image" content="https://i.loli.net/2020/03/05/C82HTgNaU4KfXBq.png">
+<meta property="article:published_time" content="2020-03-05T12:10:11.000Z">
+<meta property="article:modified_time" content="2020-03-05T13:03:14.711Z">
 <meta property="article:author" content="Feng Yuan">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/03/05/NwiCp7AfWrRedcE.png">
 
 
 
@@ -140,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="https://zonobia-a.github.io/categories/深度学习/"/>
+  <link rel="canonical" href="https://zonobia-a.github.io/2020/03/05/cycleGAN关键模型注解/"/>
 
 
 
 
 
-  <title>分类: 深度学习 | Zenobia</title>
+  <title>cycleGAN关键模型注解 | Zenobia</title>
   
 
 
@@ -166,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/Zonobia-A" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -304,83 +315,295 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>深度学习<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zonobia-a.github.io/2020/03/05/cycleGAN%E5%85%B3%E9%94%AE%E6%A8%A1%E5%9E%8B%E6%B3%A8%E8%A7%A3/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Feng Yuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zenobia">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/03/05/cycleGAN%E5%85%B3%E9%94%AE%E6%A8%A1%E5%9E%8B%E6%B3%A8%E8%A7%A3/" itemprop="url">
-              
-                <span itemprop="name">cycleGAN关键模型注解</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">cycleGAN关键模型注解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-03-05T20:10:11+08:00"
-              content="2020-03-05" >
-          03-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-05T20:10:11+08:00">
+                2020-03-05
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-05T21:03:14+08:00">
+                2020-03-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  859
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>cycleGAN网络<a id="more"></a></p>
+<h3 id="网络作用"><a href="#网络作用" class="headerlink" title="网络作用"></a>网络作用</h3><p>图像翻译（image to image translation）是一个十分热门的方向，研究证明，GANs在图像翻译方向十分成功，在cycleGANs论文前，有一个比较优秀的网络pix2pix，但是其也存在着缺陷。为此，他们做出了改进，提出了cycleGAN的网络结构。与有监督的图像转换方法不同的是，cycleGANs是一个无监督的网络模型，只需要两个图像域，不需要严格pair，就可以完成图像翻译。</p>
+<p><img src="https://i.loli.net/2020/03/05/NwiCp7AfWrRedcE.png" alt="image-20200305203408731.png"></p>
+<h3 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h3><p><strong>图像域A</strong>  与  <strong>图像域B</strong></p>
+<p>生成器：</p>
+<ul>
+<li>A–&gt;B (GeneratorA2B)</li>
+<li>B–&gt;A (GeneratorB2A)</li>
+</ul>
+<p>判别器：</p>
+<ul>
+<li>DA (判别A域图像)</li>
+<li>DB (判别B域图像)</li>
+</ul>
+<p>网络模型图</p>
+<p><img src="https://i.loli.net/2020/03/05/iRArHzWZuTyf2q4.png" alt="image-20200305203821772.png"></p>
+<p>Loss函数：</p>
+<ul>
+<li><p>对抗损失</p>
+<p><img src="https://i.loli.net/2020/03/05/XuIYinxh14KBAVC.png" alt="image-20200305204450727.png"></p>
+</li>
+<li><p>循环一致损失</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2020/03/05/ElyKoFmOJXHZgue.png" alt="image-20200305204501666.png"></p>
+<p><img src="https://i.loli.net/2020/03/05/C82HTgNaU4KfXBq.png" alt="image-20200305204515171.png"></p>
+<h3 id="代码注解"><a href="#代码注解" class="headerlink" title="代码注解"></a>代码注解</h3><ol>
+<li><p>设置placeholder，域A数据以及域B数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">phone_ = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_SIZE], name=<span class="string">"phone_"</span>)</span><br><span class="line">phone_image = tf.reshape(phone_, [<span class="number">-1</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"phone_image"</span>)</span><br><span class="line"></span><br><span class="line">dslr_ = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_SIZE], name=<span class="string">"dslr_"</span>)</span><br><span class="line">dslr_image = tf.reshape(dslr_, [<span class="number">-1</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"dslr_image"</span>)</span><br><span class="line"></span><br><span class="line">fake_phone_pool = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"fake_phone_pool"</span>)</span><br><span class="line">fake_dslr_pool = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"fake_dslr_pool"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模型部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">"Model"</span>) <span class="keyword">as</span> scope:</span><br><span class="line">    fake_dslr = models.resnet(phone_image, name=<span class="string">"g_dslr"</span>) <span class="comment"># A--&gt;B</span></span><br><span class="line">    fake_phone = models.resnet(dslr_image, name=<span class="string">"g_phone"</span>) <span class="comment"># B--&gt;A</span></span><br><span class="line">    rec_dslr = models.create_discriminator(phone_image, dslr_image, name=<span class="string">"d_dslr"</span>)<span class="comment"># 判别器判别真实A数据</span></span><br><span class="line">    rec_phone = models.create_discriminator(dslr_image, phone_image, name=<span class="string">"d_phone"</span>) <span class="comment"># 判别器判别真实B数据</span></span><br><span class="line">    scope.reuse_variables() <span class="comment"># 这一步很重要，参数复用</span></span><br><span class="line">    fake_rec_dslr = models.create_discriminator(phone_image, fake_dslr, name=<span class="string">"d_dslr"</span>) <span class="comment"># 判别器判别生成A数据</span></span><br><span class="line">    fake_rec_phone = models.create_discriminator(dslr_image, fake_phone, name=<span class="string">"d_phone"</span>) <span class="comment"># 判别器判别生成B数据</span></span><br><span class="line">    cyc_dslr = models.resnet(fake_phone, name=<span class="string">"g_dslr"</span>) <span class="comment"># fake_B--&gt;重建A</span></span><br><span class="line">    cyc_phone = models.resnet(fake_dslr, name=<span class="string">"g_phone"</span>) <span class="comment"># fake_A--&gt;重建B</span></span><br><span class="line">    scope.reuse_variables()</span><br><span class="line">    fake_pool_rec_dslr = models.create_discriminator(phone_image, fake_dslr_pool, name=<span class="string">"d_dslr"</span>) <span class="comment"># 判别生成A数据</span></span><br><span class="line">    fake_pool_rec_phone = models.create_discriminator(dslr_image, fake_phone_pool, name=<span class="string">"d_phone"</span>) <span class="comment"># 判别生成B数据</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>损失部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cyc_loss = tf.reduce_mean(tf.abs(dslr_image - cyc_dslr)) + tf.reduce_mean(tf.abs(phone_image - cyc_phone)) <span class="comment"># 循环一致性损失</span></span><br><span class="line">disc_loss_dslr = tf.reduce_mean(tf.squared_difference(fake_rec_dslr, <span class="number">1</span>)) <span class="comment"># 判别器A损失</span></span><br><span class="line">disc_loss_phone = tf.reduce_mean(tf.squared_difference(fake_rec_phone, <span class="number">1</span>)) <span class="comment"># 判别器B损失</span></span><br><span class="line">g_loss_dslr = cyc_loss * <span class="number">10</span> + disc_loss_dslr <span class="comment"># A生成器损失</span></span><br><span class="line">g_loss_phone = cyc_loss * <span class="number">10</span> + disc_loss_phone <span class="comment"># B生成器损失</span></span><br><span class="line">d_loss_dslr = (tf.reduce_mean(tf.square(fake_pool_rec_dslr)) + tf.reduce_mean(tf.squared_difference(rec_dslr, <span class="number">1</span>))) / <span class="number">2.0</span> <span class="comment"># A判别器损失</span></span><br><span class="line">d_loss_phone = (tf.reduce_mean(tf.square(fake_pool_rec_phone)) + tf.reduce_mean(tf.squared_difference(rec_phone, <span class="number">1</span>))) / <span class="number">2.0</span> <span class="comment"># B判别器损失</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化参数</p>
+<p>后面要相应的对两个生成器和两个判别器进行训练</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g_phone_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"g_phone"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">g_dslr_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"g_dslr"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">d_phone_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"d_phone"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">d_dslr_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"d_dslr"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">train_g_phone = tf.train.AdamOptimizer(learning_rate).minimize(g_loss_phone, var_list=g_phone_vars)</span><br><span class="line">train_g_dslr = tf.train.AdamOptimizer(learning_rate).minimize(g_loss_dslr, var_list=g_dslr_vars)</span><br><span class="line">train_d_phone = tf.train.AdamOptimizer(learning_rate).minimize(d_loss_phone, var_list=d_phone_vars)</span><br><span class="line">train_d_dslr = tf.train.AdamOptimizer(learning_rate).minimize(d_loss_dslr, var_list=d_dslr_vars)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>训练部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train generator A</span></span><br><span class="line">idx_train = np.random.randint(<span class="number">0</span>, train_sizAe, batch_size)</span><br><span class="line">phone_images = train_data[idx_train]</span><br><span class="line">dslr_images = train_answ[idx_train]</span><br><span class="line">_, temp_dslr, loss_g_dslr = sess.run([train_g_dslr, fake_dslr, g_loss_dslr],</span><br><span class="line">                                     feed_dict=&#123;phone_: phone_images, dslr_: dslr_images&#125;) <span class="comment"># train_g_dslr就对应上一部分的相应的参数</span></span><br><span class="line">temp_dslr1 = fake_image_pool(number_fake_inputs, temp_dslr, fake_images_dslr)</span><br><span class="line"><span class="comment"># train discriminator A</span></span><br><span class="line">_ = sess.run([train_d_dslr], feed_dict=&#123;phone_: phone_images, dslr_: dslr_images, fake_dslr_pool: temp_dslr1&#125;) <span class="comment"># train_d_dslr就对应上一部分的相应的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># train generator B</span></span><br><span class="line">_, temp_phone, loss_g_phone = sess.run([train_g_phone, fake_phone, g_loss_phone],</span><br><span class="line">                                       feed_dict=&#123;phone_: phone_images, dslr_: dslr_images&#125;) <span class="comment"># train_g_phone就对应上一部分的相应的参数</span></span><br><span class="line"><span class="comment"># train discriminator B</span></span><br><span class="line">temp_phone1 = fake_image_pool(number_fake_inputs, temp_phone, fake_images_phone)</span><br><span class="line">_ = sess.run([train_d_phone], feed_dict=&#123;phone_: phone_images, dslr_: dslr_images, fake_phone_pool: temp_phone1&#125;) <span class="comment"># train_d_phone就对应上一部分的相应的参数</span></span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/02/23/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%89%B9%E5%BE%81%E5%8F%AF%E8%A7%86%E5%8C%96/" itemprop="url">
-              
-                <span itemprop="name">深度学习特征可视化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-23T20:27:36+08:00"
-              content="2020-02-23" >
-          02-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>cycleGAN是用来做图像翻译的，可以作为现在无监督图像翻译方法的baseline</li>
+<li>cycleGAN重点要理解其网络的意义，循环一致性损失的优越性能</li>
+<li>网络部分如果有疑惑，可以在联系我。</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+      <div>
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Feng Yuan 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/28/tensorflow%E5%AE%9E%E7%8E%B0sobel%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95/" rel="next" title="tensorflow实现sobel梯度算法">
+                <i class="fa fa-chevron-left"></i> tensorflow实现sobel梯度算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -388,6 +611,13 @@
 
 
           
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
 
         </div>
         
@@ -408,8 +638,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +747,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络作用"><span class="nav-number">1.</span> <span class="nav-text">网络作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络模型"><span class="nav-number">2.</span> <span class="nav-text">网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码注解"><span class="nav-number">3.</span> <span class="nav-text">代码注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -689,6 +944,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -729,6 +988,22 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'a7ef9cb22eccfbf3364e',
+          clientSecret: 'bbdfdc128bf6f534715fb3ebad5d1dc6fc0c9e3e',
+          repo: 'zonobia-a.github.io',
+          owner: 'Zonobia-A',
+          admin: ['Zonobia-A'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 

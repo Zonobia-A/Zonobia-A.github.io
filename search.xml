@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>cycleGAN关键模型注解</title>
+    <url>/2020/03/05/cycleGAN%E5%85%B3%E9%94%AE%E6%A8%A1%E5%9E%8B%E6%B3%A8%E8%A7%A3/</url>
+    <content><![CDATA[<p>cycleGAN网络<a id="more"></a></p>
+<h3 id="网络作用"><a href="#网络作用" class="headerlink" title="网络作用"></a>网络作用</h3><p>图像翻译（image to image translation）是一个十分热门的方向，研究证明，GANs在图像翻译方向十分成功，在cycleGANs论文前，有一个比较优秀的网络pix2pix，但是其也存在着缺陷。为此，他们做出了改进，提出了cycleGAN的网络结构。与有监督的图像转换方法不同的是，cycleGANs是一个无监督的网络模型，只需要两个图像域，不需要严格pair，就可以完成图像翻译。</p>
+<p><img src="https://i.loli.net/2020/03/05/NwiCp7AfWrRedcE.png" alt="image-20200305203408731.png"></p>
+<h3 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h3><p><strong>图像域A</strong>  与  <strong>图像域B</strong></p>
+<p>生成器：</p>
+<ul>
+<li>A–&gt;B (GeneratorA2B)</li>
+<li>B–&gt;A (GeneratorB2A)</li>
+</ul>
+<p>判别器：</p>
+<ul>
+<li>DA (判别A域图像)</li>
+<li>DB (判别B域图像)</li>
+</ul>
+<p>网络模型图</p>
+<p><img src="https://i.loli.net/2020/03/05/iRArHzWZuTyf2q4.png" alt="image-20200305203821772.png"></p>
+<p>Loss函数：</p>
+<ul>
+<li><p>对抗损失</p>
+<p><img src="https://i.loli.net/2020/03/05/XuIYinxh14KBAVC.png" alt="image-20200305204450727.png"></p>
+</li>
+<li><p>循环一致损失</p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2020/03/05/ElyKoFmOJXHZgue.png" alt="image-20200305204501666.png"></p>
+<p><img src="https://i.loli.net/2020/03/05/C82HTgNaU4KfXBq.png" alt="image-20200305204515171.png"></p>
+<h3 id="代码注解"><a href="#代码注解" class="headerlink" title="代码注解"></a>代码注解</h3><ol>
+<li><p>设置placeholder，域A数据以及域B数据</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">phone_ = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_SIZE], name=<span class="string">"phone_"</span>)</span><br><span class="line">phone_image = tf.reshape(phone_, [<span class="number">-1</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"phone_image"</span>)</span><br><span class="line"></span><br><span class="line">dslr_ = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_SIZE], name=<span class="string">"dslr_"</span>)</span><br><span class="line">dslr_image = tf.reshape(dslr_, [<span class="number">-1</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"dslr_image"</span>)</span><br><span class="line"></span><br><span class="line">fake_phone_pool = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"fake_phone_pool"</span>)</span><br><span class="line">fake_dslr_pool = tf.placeholder(tf.float32, [<span class="literal">None</span>, PATCH_HEIGHT, PATCH_WIDTH, <span class="number">3</span>], name=<span class="string">"fake_dslr_pool"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模型部分</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">"Model"</span>) <span class="keyword">as</span> scope:</span><br><span class="line">    fake_dslr = models.resnet(phone_image, name=<span class="string">"g_dslr"</span>) <span class="comment"># A--&gt;B</span></span><br><span class="line">    fake_phone = models.resnet(dslr_image, name=<span class="string">"g_phone"</span>) <span class="comment"># B--&gt;A</span></span><br><span class="line">    rec_dslr = models.create_discriminator(phone_image, dslr_image, name=<span class="string">"d_dslr"</span>)<span class="comment"># 判别器判别真实A数据</span></span><br><span class="line">    rec_phone = models.create_discriminator(dslr_image, phone_image, name=<span class="string">"d_phone"</span>) <span class="comment"># 判别器判别真实B数据</span></span><br><span class="line">    scope.reuse_variables() <span class="comment"># 这一步很重要，参数复用</span></span><br><span class="line">    fake_rec_dslr = models.create_discriminator(phone_image, fake_dslr, name=<span class="string">"d_dslr"</span>) <span class="comment"># 判别器判别生成A数据</span></span><br><span class="line">    fake_rec_phone = models.create_discriminator(dslr_image, fake_phone, name=<span class="string">"d_phone"</span>) <span class="comment"># 判别器判别生成B数据</span></span><br><span class="line">    cyc_dslr = models.resnet(fake_phone, name=<span class="string">"g_dslr"</span>) <span class="comment"># fake_B--&gt;重建A</span></span><br><span class="line">    cyc_phone = models.resnet(fake_dslr, name=<span class="string">"g_phone"</span>) <span class="comment"># fake_A--&gt;重建B</span></span><br><span class="line">    scope.reuse_variables()</span><br><span class="line">    fake_pool_rec_dslr = models.create_discriminator(phone_image, fake_dslr_pool, name=<span class="string">"d_dslr"</span>) <span class="comment"># 判别生成A数据</span></span><br><span class="line">    fake_pool_rec_phone = models.create_discriminator(dslr_image, fake_phone_pool, name=<span class="string">"d_phone"</span>) <span class="comment"># 判别生成B数据</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>损失部分</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cyc_loss = tf.reduce_mean(tf.abs(dslr_image - cyc_dslr)) + tf.reduce_mean(tf.abs(phone_image - cyc_phone)) <span class="comment"># 循环一致性损失</span></span><br><span class="line">disc_loss_dslr = tf.reduce_mean(tf.squared_difference(fake_rec_dslr, <span class="number">1</span>)) <span class="comment"># 判别器A损失</span></span><br><span class="line">disc_loss_phone = tf.reduce_mean(tf.squared_difference(fake_rec_phone, <span class="number">1</span>)) <span class="comment"># 判别器B损失</span></span><br><span class="line">g_loss_dslr = cyc_loss * <span class="number">10</span> + disc_loss_dslr <span class="comment"># A生成器损失</span></span><br><span class="line">g_loss_phone = cyc_loss * <span class="number">10</span> + disc_loss_phone <span class="comment"># B生成器损失</span></span><br><span class="line">d_loss_dslr = (tf.reduce_mean(tf.square(fake_pool_rec_dslr)) + tf.reduce_mean(tf.squared_difference(rec_dslr, <span class="number">1</span>))) / <span class="number">2.0</span> <span class="comment"># A判别器损失</span></span><br><span class="line">d_loss_phone = (tf.reduce_mean(tf.square(fake_pool_rec_phone)) + tf.reduce_mean(tf.squared_difference(rec_phone, <span class="number">1</span>))) / <span class="number">2.0</span> <span class="comment"># B判别器损失</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化参数</p>
+<p>后面要相应的对两个生成器和两个判别器进行训练</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">g_phone_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"g_phone"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">g_dslr_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"g_dslr"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">d_phone_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"d_phone"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">d_dslr_vars = [v <span class="keyword">for</span> v <span class="keyword">in</span> tf.global_variables() <span class="keyword">if</span> <span class="string">"d_dslr"</span> <span class="keyword">in</span> v.name]</span><br><span class="line">train_g_phone = tf.train.AdamOptimizer(learning_rate).minimize(g_loss_phone, var_list=g_phone_vars)</span><br><span class="line">train_g_dslr = tf.train.AdamOptimizer(learning_rate).minimize(g_loss_dslr, var_list=g_dslr_vars)</span><br><span class="line">train_d_phone = tf.train.AdamOptimizer(learning_rate).minimize(d_loss_phone, var_list=d_phone_vars)</span><br><span class="line">train_d_dslr = tf.train.AdamOptimizer(learning_rate).minimize(d_loss_dslr, var_list=d_dslr_vars)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>训练部分</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># train generator A</span></span><br><span class="line">idx_train = np.random.randint(<span class="number">0</span>, train_sizAe, batch_size)</span><br><span class="line">phone_images = train_data[idx_train]</span><br><span class="line">dslr_images = train_answ[idx_train]</span><br><span class="line">_, temp_dslr, loss_g_dslr = sess.run([train_g_dslr, fake_dslr, g_loss_dslr],</span><br><span class="line">                                     feed_dict=&#123;phone_: phone_images, dslr_: dslr_images&#125;) <span class="comment"># train_g_dslr就对应上一部分的相应的参数</span></span><br><span class="line">temp_dslr1 = fake_image_pool(number_fake_inputs, temp_dslr, fake_images_dslr)</span><br><span class="line"><span class="comment"># train discriminator A</span></span><br><span class="line">_ = sess.run([train_d_dslr], feed_dict=&#123;phone_: phone_images, dslr_: dslr_images, fake_dslr_pool: temp_dslr1&#125;) <span class="comment"># train_d_dslr就对应上一部分的相应的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># train generator B</span></span><br><span class="line">_, temp_phone, loss_g_phone = sess.run([train_g_phone, fake_phone, g_loss_phone],</span><br><span class="line">                                       feed_dict=&#123;phone_: phone_images, dslr_: dslr_images&#125;) <span class="comment"># train_g_phone就对应上一部分的相应的参数</span></span><br><span class="line"><span class="comment"># train discriminator B</span></span><br><span class="line">temp_phone1 = fake_image_pool(number_fake_inputs, temp_phone, fake_images_phone)</span><br><span class="line">_ = sess.run([train_d_phone], feed_dict=&#123;phone_: phone_images, dslr_: dslr_images, fake_phone_pool: temp_phone1&#125;) <span class="comment"># train_d_phone就对应上一部分的相应的参数</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>cycleGAN是用来做图像翻译的，可以作为现在无监督图像翻译方法的baseline</li>
+<li>cycleGAN重点要理解其网络的意义，循环一致性损失的优越性能</li>
+<li>网络部分如果有疑惑，可以在联系我。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tensorflow实现sobel梯度算法</title>
     <url>/2020/02/28/tensorflow%E5%AE%9E%E7%8E%B0sobel%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>tensorflow中使用sobel算子对[bs , h, w, c]的图像梯度<a id="more"></a></p>
