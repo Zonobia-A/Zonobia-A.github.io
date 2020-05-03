@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="互联网," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -105,25 +105,17 @@
 
 
 
-<meta name="description" content="本篇将使用hexo工具加Next主题初步搭建一个blog，hexo能极大的加速你的blog的搭建，无需HTML，CSS，JS等基础知识，上手迅速。同时，当你使用过NexT主题之后，你一定会深深地爱上她。">
+<meta name="description" content="LeetCode 05.02  删除最外层的括号  二叉搜索树的范围和  将每个元素替换为右侧最大元素  无重复字符的最长字串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo + NexT主题搭建美观的个人主页（一）">
-<meta property="og:url" content="https://zonobia-a.github.io/2020/02/14/hexo-NexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E7%BE%8E%E8%A7%82%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="LeetCode 0502">
+<meta property="og:url" content="https://zonobia-a.github.io/2020/05/03/LeetCode-0502/index.html">
 <meta property="og:site_name" content="Zenobia">
-<meta property="og:description" content="本篇将使用hexo工具加Next主题初步搭建一个blog，hexo能极大的加速你的blog的搭建，无需HTML，CSS，JS等基础知识，上手迅速。同时，当你使用过NexT主题之后，你一定会深深地爱上她。">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/38e1UpC2xGkYst6.png">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/wUohBkQAafiDc2j.png">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/dPNAaubxXKsBErW.png">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/pYJGLS8ksCwVjFr.png">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/W8DGqFYm6o3xfQi.png">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/4ugh1W3P6lZnEzd.png">
-<meta property="og:image" content="https://i.loli.net/2020/02/15/3Vvj6ouAimt1HOa.png">
-<meta property="article:published_time" content="2020-02-14T05:31:58.000Z">
-<meta property="article:modified_time" content="2020-02-15T05:39:48.241Z">
+<meta property="og:description" content="LeetCode 05.02  删除最外层的括号  二叉搜索树的范围和  将每个元素替换为右侧最大元素  无重复字符的最长字串">
+<meta property="article:published_time" content="2020-05-03T06:31:17.000Z">
+<meta property="article:modified_time" content="2020-05-03T06:35:21.245Z">
 <meta property="article:author" content="Feng Yuan">
-<meta property="article:tag" content="互联网">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/02/15/38e1UpC2xGkYst6.png">
 
 
 
@@ -153,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="https://zonobia-a.github.io/2020/02/14/hexo-NexT主题搭建美观的个人主页（一）/"/>
+  <link rel="canonical" href="https://zonobia-a.github.io/2020/05/03/LeetCode-0502/"/>
 
 
 
 
 
-  <title>hexo + NexT主题搭建美观的个人主页（一） | Zenobia</title>
+  <title>LeetCode 0502 | Zenobia</title>
   
 
 
@@ -331,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zonobia-a.github.io/2020/02/14/hexo-NexT%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E7%BE%8E%E8%A7%82%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%88%E4%B8%80%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://zonobia-a.github.io/2020/05/03/LeetCode-0502/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Feng Yuan">
@@ -348,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo + NexT主题搭建美观的个人主页（一）</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode 0502</h1>
         
 
         <div class="post-meta">
@@ -360,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T13:31:58+08:00">
-                2020-02-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-03T14:31:17+08:00">
+                2020-05-03
               </time>
             
 
@@ -376,8 +368,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-15T13:39:48+08:00">
-                2020-02-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-03T14:35:21+08:00">
+                2020-05-03
               </time>
             
           </span>
@@ -395,8 +387,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%92%E8%81%94%E7%BD%91/" itemprop="url" rel="index">
-                    <span itemprop="name">互联网</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -426,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  837
+                  1.1k
                 </span>
               
 
@@ -442,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -463,54 +455,57 @@
       
 
       
-        <p>本篇将使用hexo工具加Next主题初步搭建一个blog，hexo能极大的加速你的blog的搭建，无需HTML，CSS，JS等基础知识，上手迅速。同时，当你使用过NexT主题之后，你一定会深深地爱上她。<a id="more"></a></p>
-<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><ul>
-<li>Github</li>
-<li>Node.Js</li>
-</ul>
-<h4 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h4><p>Github安装以及如何配置最基本的个人主页已经在上一节进行过介绍了，不明白的可以去看上一篇。</p>
-<h4 id="Node-Js"><a href="#Node-Js" class="headerlink" title="Node.Js"></a>Node.Js</h4><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.Js</a>是一个工具，当你觉得等待后端是一个繁琐耗时的过程时，你可以使用node自个儿解决问题，在我们这里他很简单，就是npm，npm就是统一维护升级你的依赖包，使你管理文件的时候显得不那么手忙脚乱。</p>
-<p><img src="https://i.loli.net/2020/02/15/38e1UpC2xGkYst6.png" alt="image-20200214173926555.png"></p>
-<p>安装完之后，使用npm -v 查看环境变量是否配置完成。如果没有成功，需要自己手动配置环境变量。</p>
-<hr>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>Node.Js安装好之后，咱就可以正式开始搭建属于自己的博客。打开cmd（命令行），输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+        <p>LeetCode 05.02</p>
+<ol>
+<li><p>删除最外层的括号</p>
+</li>
+<li><p>二叉搜索树的范围和</p>
+</li>
+<li><p>将每个元素替换为右侧最大元素</p>
+</li>
+<li><p>无重复字符的最长字串</p>
+<a id="more"></a>
 
-<p>随便在哪里新建文件夹，文件夹的名字任选，我就取名为blog，在cmd中切换到blog文件夹，输入命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="1021-删除最外层的括号"><a href="#1021-删除最外层的括号" class="headerlink" title="1021. 删除最外层的括号"></a>1021. 删除最外层的括号</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="(https://leetcode-cn.com/problems/remove-outermost-parentheses/)">题目</a></h5><p>有效括号字符串为空 (“”)、”(“ + A + “)” 或 A + B，其中 A 和 B 都是有效的括号字符串，+ 代表字符串的连接。例如，””，”()”，”(())()” 和 “(()(()))” 都是有效的括号字符串。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入："(()())(())"</span><br><span class="line">输出："()()()"</span><br><span class="line">解释：</span><br><span class="line">输入字符串为 "(()())(())"，原语化分解得到 "(()())" + "(())"，</span><br><span class="line">删除每个部分中的最外层括号后得到 "()()" + "()" = "()()()"。</span><br></pre></td></tr></table></figure>
 
-<p>安装成功，此时blog的文件结构应该像下图</p>
-<p><img src="https://i.loli.net/2020/02/15/wUohBkQAafiDc2j.png" alt="image-20200214213146241.png"></p>
-<p><img src="https://i.loli.net/2020/02/15/dPNAaubxXKsBErW.png" alt="image-20200214213348369.png"></p>
-<p>输入命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server [-p](p是开放端口，默认4000，但当4000端口被其他进程占据，可以用p指定其他端口)</span><br></pre></td></tr></table></figure>
+<h5 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h5><p>思路：如果有效字符串 S 非空，且不存在将其拆分为 S = A+B 的方法，我们称其为原语（primitive），其中 A 和 B 都是非空有效括号字符串。给出一个非空有效字符串 S，考虑将其进行原语化分解，使得：S = P_1 + P_2 + … + P_k，其中 P_i 是有效括号字符串原语。对 S 进行原语化分解，删除分解中每个原语字符串的最外层括号，返回 S 。</p>
+<p>简化理解：将”(“和”)”分别记录为1， -1，遍历括号字符串并累加，当累加值为0的时候，我们认为从括号字符串中分解出了一个原语。将所有的原语从括号字符串中分解出，去掉最外面的括号。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeOuterParentheses</span><span class="params">(self, S: str)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> S:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">        L = list(S)</span><br><span class="line">        L_num = [<span class="number">1</span> <span class="keyword">if</span> i == <span class="string">'('</span> <span class="keyword">else</span> <span class="number">-1</span> <span class="keyword">for</span> i <span class="keyword">in</span> L ]</span><br><span class="line">        sub_list = []</span><br><span class="line">        temp = []</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; len(L):</span><br><span class="line">            temp.append(L_num[i])</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> sum(temp):</span><br><span class="line">                sub_list.append(temp)</span><br><span class="line">                temp = []</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> sub_list:</span><br><span class="line">            l.pop(<span class="number">0</span>)</span><br><span class="line">            l.pop(<span class="number">-1</span>)</span><br><span class="line">            results.extend(l)</span><br><span class="line">        p = []</span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> results:</span><br><span class="line">            <span class="keyword">if</span> l == <span class="number">1</span>:</span><br><span class="line">                p.append(<span class="string">'('</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                p.append(<span class="string">')'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(p)</span><br></pre></td></tr></table></figure>
 
-<p>测试，在网址中输入localhost:4000如果能跳转到如下界面，证明你的hexo已经配置完成。</p>
-<p><img src="https://i.loli.net/2020/02/15/pYJGLS8ksCwVjFr.png" alt="image-20200214213722822.png"></p>
-<hr>
-<h3 id="配置SSH-keys"><a href="#配置SSH-keys" class="headerlink" title="配置SSH keys"></a>配置SSH keys</h3><p>右键桌面，选择Git Bash，配置个人信息，输入命令，yourname是你的github账号的用户名，yourEmail是注册时用的邮箱 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;yourEmail&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;yourEmail&quot;</span><br></pre></td></tr></table></figure>
 
-<p>在秘钥生成后，会有对应的存放文件地址，搜索.ssh文件夹，去该地址中，找到<code>id_rsa.pub</code>文件，复制里面的内容，粘贴至GitHub中，点击右上角用户头像下的<code>Settings</code>，之后点击左侧的<code>SSH and GPG keys</code>，找到<code>New SSH key</code>点击，输入<code>title</code>，并将之前复制的内容粘贴到下面的<code>key</code>中，最后点击<code>Add SSH key</code>，完成：</p>
-<p><img src="https://i.loli.net/2020/02/15/W8DGqFYm6o3xfQi.png" alt="image-20200215000748789.png">博客根目录下寻找_config.yml，将修改deploy</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/yourname/yourname.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
-<p>在blog文件下使用命令，将blog打包部署到github</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h4 id="938-二叉搜索树的范围和"><a href="#938-二叉搜索树的范围和" class="headerlink" title="938. 二叉搜索树的范围和"></a>938. 二叉搜索树的范围和</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/range-sum-of-bst/" target="_blank" rel="noopener">题目</a></h5><p>给定二叉搜索树的根结点 <code>root</code>，返回 <code>L</code> 和 <code>R</code>（含）之间的所有结点的值的和。二叉搜索树保证具有唯一的值。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [10,5,15,3,7,null,18], L = 7, R = 15</span><br><span class="line">输出：32</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h3 id="安装NexT主题"><a href="#安装NexT主题" class="headerlink" title="安装NexT主题"></a>安装NexT主题</h3><p>默认的主题是landscape，有一说一，确实不太好看，因此我们选择hexo官方推荐的NexT主题。在github搜索栏中搜索hexo-next。下面一个是NexT6，仍有团队在维护，可以看更新时间，上面的已经不维护更新了，推荐NexT6. </p>
-<p><img src="https://i.loli.net/2020/02/15/4ugh1W3P6lZnEzd.png" alt="image-20200215001112500.png"></p>
-<p>选择git clone或者直接下载压缩包。将next文件夹放到/blog/themes下，里面其实有一个landscape。OK，在站点根目录下有一个_config.yml，搜索theme，然后进行修改</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span> <span class="string">(跟你的next文件夹名字一样)</span></span><br></pre></td></tr></table></figure>
+<h5 id="解题-1"><a href="#解题-1" class="headerlink" title="解题"></a>解题</h5><p>思路：递归法遍历二叉树</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rangeSumBST</span><span class="params">(self, root: TreeNode, L: int, R: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> L &lt;= root.val &lt;= R:</span><br><span class="line">            <span class="keyword">return</span> root.val + self.rangeSumBST(root.left, L, R) + self.rangeSumBST(root.right, L, R)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.rangeSumBST(root.left, L, R) + self.rangeSumBST(root.right, L, R)</span><br></pre></td></tr></table></figure>
 
-<p>此时，输入命令，完成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2020/02/15/3Vvj6ouAimt1HOa.png" alt="image-20200215004304632.png"></p>
-<hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli 安装hexo</span><br><span class="line">hexo init 建立站点文件夹</span><br><span class="line">hexo server [p] 在本地进行演示</span><br><span class="line">hexo generate 生成public文件夹</span><br><span class="line">hexo deploy 将博客打包上传到github</span><br><span class="line">hexo clean 清除本地缓存文件</span><br></pre></td></tr></table></figure>
 
+<h4 id="1299-将每个元素替换为右侧最大元素"><a href="#1299-将每个元素替换为右侧最大元素" class="headerlink" title="1299. 将每个元素替换为右侧最大元素"></a>1299. 将每个元素替换为右侧最大元素</h4><h5 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/replace-elements-with-greatest-element-on-right-side/" target="_blank" rel="noopener">题目</a></h5><p>给你一个数组 <code>arr</code> ，请你将每个元素用它右边最大的元素替换，如果是最后一个元素，用 <code>-1</code> 替换。完成所有替换操作后，请你返回这个数组。</p>
+<p><strong>示例：</strong> </p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [17,18,5,4,6,1]</span><br><span class="line">输出：[18,6,6,6,1,-1]</span><br></pre></td></tr></table></figure>
+
+<h5 id="解题-2"><a href="#解题-2" class="headerlink" title="解题"></a>解题</h5><h6 id="方法一（正序遍历数组）"><a href="#方法一（正序遍历数组）" class="headerlink" title="方法一（正序遍历数组）"></a>方法一（正序遍历数组）</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">replaceElements</span><span class="params">(self, arr: List[int])</span> -&gt; List[int]:</span></span><br><span class="line">        length = len(arr)</span><br><span class="line">        result = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(length)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length):</span><br><span class="line">            <span class="keyword">if</span> i - length + <span class="number">1</span>:</span><br><span class="line">                result[i] = max(arr[i+<span class="number">1</span>: length])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                result[i] = <span class="number">-1</span> </span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h6 id="方法二（倒序遍历数组）"><a href="#方法二（倒序遍历数组）" class="headerlink" title="方法二（倒序遍历数组）"></a>方法二（倒序遍历数组）</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">replaceElements</span><span class="params">(self, arr: List[int])</span> -&gt; List[int]:</span></span><br><span class="line">        n = len(arr)</span><br><span class="line">        ans = [<span class="number">0</span>] * (n - <span class="number">1</span>) + [<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            ans[i] = max(ans[i + <span class="number">1</span>], arr[i + <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p>*<u>倒序比正序遍历更少，时间复杂度更低</u>*</p>
+<h4 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h4><h5 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">题目</a></h5><p>给定一个字符串，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。 </p>
+<p><strong>示例</strong> ：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: "abcabcbb"</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。</span><br></pre></td></tr></table></figure>
+
+<h5 id="解题-3"><a href="#解题-3" class="headerlink" title="解题"></a>解题</h5><h6 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h6><p>思路：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">以 (a)bcabcbb(a)bcabcbb 开始的最长字符串为 (abc)abcbb(abc)abcbb；</span><br><span class="line">以 a(b)cabcbba(b)cabcbb 开始的最长字符串为 a(bca)bcbba(bca)bcbb；</span><br><span class="line">以 ab(c)abcbbab(c)abcbb 开始的最长字符串为 ab(cab)cbbab(cab)cbb；</span><br><span class="line">以 abc(a)bcbbabc(a)bcbb 开始的最长字符串为 abc(abc)bbabc(abc)bb；</span><br><span class="line">以 abca(b)cbbabca(b)cbb 开始的最长字符串为 abca(bc)bbabca(bc)bb；</span><br><span class="line">以 abcab(c)bbabcab(c)bb 开始的最长字符串为 abcab(cb)babcab(cb)b；</span><br><span class="line">以 abcabc(b)babcabc(b)b 开始的最长字符串为 abcabc(b)babcabc(b)b；</span><br><span class="line">以 abcabcb(b)abcabcb(b) 开始的最长字符串为 abcabcb(b)abcabcb(b)。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">        l = list(s)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> l:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        sub_list = []</span><br><span class="line">        last_index = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(l)):</span><br><span class="line">            temp = l[i:last_index]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(last_index, len(l)):</span><br><span class="line">                <span class="keyword">if</span> l[j] <span class="keyword">not</span> <span class="keyword">in</span> temp:</span><br><span class="line">                    temp.append(l[j])</span><br><span class="line">                    last_index = j</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    last_index = j</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            sub_list.append(len(temp))</span><br><span class="line">        <span class="keyword">return</span> max(sub_list)</span><br></pre></td></tr></table></figure>
+
+<p><strong><u><em>本题第二个循处可以优化，last_index可以进一步缩小搜索的范围</em></u></strong></p>
 
       
     </div>
@@ -562,7 +557,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/" rel="tag"># 互联网</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -575,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/09/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BAgithub-page/" rel="next" title="如何搭建github-page">
-                <i class="fa fa-chevron-left"></i> 如何搭建github-page
+              <a href="/2020/05/03/LeetCode-%E9%80%92%E5%BD%92/" rel="next" title="LeetCode 递归">
+                <i class="fa fa-chevron-left"></i> LeetCode 递归
               </a>
             
           </div>
@@ -584,10 +579,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/15/Keras%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="Keras函数（一）">
-                Keras函数（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -761,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装工具"><span class="nav-number">1.</span> <span class="nav-text">安装工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Github"><span class="nav-number">1.1.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-Js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.Js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置SSH-keys"><span class="nav-number">3.</span> <span class="nav-text">配置SSH keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装NexT主题"><span class="nav-number">4.</span> <span class="nav-text">安装NexT主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1021-删除最外层的括号"><span class="nav-number">1.</span> <span class="nav-text">1021. 删除最外层的括号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题"><span class="nav-number">1.2.</span> <span class="nav-text">解题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#938-二叉搜索树的范围和"><span class="nav-number">2.</span> <span class="nav-text">938. 二叉搜索树的范围和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题-1"><span class="nav-number">2.2.</span> <span class="nav-text">解题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1299-将每个元素替换为右侧最大元素"><span class="nav-number">3.</span> <span class="nav-text">1299. 将每个元素替换为右侧最大元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题-2"><span class="nav-number">3.2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方法一（正序遍历数组）"><span class="nav-number">3.2.1.</span> <span class="nav-text">方法一（正序遍历数组）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法二（倒序遍历数组）"><span class="nav-number">3.2.2.</span> <span class="nav-text">方法二（倒序遍历数组）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-无重复字符的最长子串"><span class="nav-number">4.</span> <span class="nav-text">3. 无重复字符的最长子串</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题-3"><span class="nav-number">4.2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#滑动窗口"><span class="nav-number">4.2.1.</span> <span class="nav-text">滑动窗口</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
