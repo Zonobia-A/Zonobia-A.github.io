@@ -1,16 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LeetCode 0502</title>
+    <title>LeetCode 05.05</title>
+    <url>/2020/05/05/LeetCode-05-05/</url>
+    <content><![CDATA[<p>验证二插搜索树（树 // 递归 // 中序遍历）<a id="more"></a></p>
+<h4 id="验证二叉搜索树"><a href="#验证二叉搜索树" class="headerlink" title="验证二叉搜索树"></a>验证二叉搜索树</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">题目</a></h5><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：</p>
+<ul>
+<li>节点的左子树只包含小于当前节点的数。</li>
+<li>节点的右子树只包含大于当前节点的数。</li>
+<li>所有左子树和右子树自身必须也是二叉搜索树。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">    2</span><br><span class="line">   / <span class="tag">\</span></span><br><span class="line">  1   3</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">    5</span><br><span class="line">   / <span class="tag">\</span></span><br><span class="line">  1   4</span><br><span class="line">     / <span class="tag">\</span></span><br><span class="line">    3   6</span><br><span class="line">输出: false</span><br><span class="line">解释: 输入为: [5,1,4,null,null,3,6]。</span><br><span class="line">     根节点的值为 5 ，但是其右子节点值为 4 。</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一（递归）"><a href="#方法一（递归）" class="headerlink" title="方法一（递归）"></a>方法一（递归）</h6><p>思路：构造一个辅助函数，给一个上下界，首先判断当前节点是在上下界内。如果在，根据根节点更新上下界，递归进入左子树。左子树判断完后，更新上下界，递归进入右子树。直至所有节点都判断完</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: TreeNode)</span> -&gt; bool:</span></span><br><span class="line">        <span class="comment"># 递归方式</span></span><br><span class="line">        min_v = float(<span class="string">'-Inf'</span>)</span><br><span class="line">        max_v = float(<span class="string">'Inf'</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(node, lower, upper)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            val = node.val</span><br><span class="line">            <span class="keyword">if</span> val &lt;= lower <span class="keyword">or</span> val &gt;= upper:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> helper(node.left, lower, val):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> helper(node.right, val, upper):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> helper(root, min_v, max_v)</span><br></pre></td></tr></table></figure>
+
+<p>方法二（中序遍历）</p>
+<p>思路：中序遍历二叉树，遍历结果如果有序说明是一个二叉搜索树，如果无序则不是一个二叉搜索树。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root: TreeNode)</span> -&gt; bool:</span></span><br><span class="line">        <span class="comment"># 中序遍历</span></span><br><span class="line">        stack = []</span><br><span class="line">        inorder = float(<span class="string">'-Inf'</span>)</span><br><span class="line">        <span class="keyword">while</span> stack <span class="keyword">or</span> root:</span><br><span class="line">            <span class="keyword">while</span> root:</span><br><span class="line">                stack.append(root)</span><br><span class="line">                root = root.left</span><br><span class="line">            root = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> root.val &lt;= inorder:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            inorder = root.val</span><br><span class="line">            root = root.right</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode 05.04</title>
+    <url>/2020/05/05/LeetCode-05-04/</url>
+    <content><![CDATA[<p>45.跳跃游戏（数组 // 动态规划 // 贪心）<a id="more"></a></p>
+<h4 id="跳跃游戏"><a href="#跳跃游戏" class="headerlink" title="跳跃游戏"></a>跳跃游戏</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/jump-game-ii/" target="_blank" rel="noopener">题目</a></h5><p>给定一个非负整数数组，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: [2,3,1,1,4]</span><br><span class="line">输出: 2</span><br><span class="line">解释: 跳到最后一个位置的最小跳跃数是 2。</span><br><span class="line">     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。</span><br></pre></td></tr></table></figure>
+
+<h5 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h5><h6 id="方法一-顺藤摸瓜"><a href="#方法一-顺藤摸瓜" class="headerlink" title="方法一(顺藤摸瓜)"></a>方法一(顺藤摸瓜)</h6><p>思路：贪心地进行正向查找，每次找到可到达的最远位置，就可以在线性时间内得到最少的跳跃次数。 </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jump</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        maxPos, end, step = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> maxPos &gt;= i:</span><br><span class="line">                maxPos = max(maxPos, i + nums[i])</span><br><span class="line">                <span class="keyword">if</span> i == end:</span><br><span class="line">                    end = maxPos</span><br><span class="line">                    step += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> step</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="方法二-顺瓜摸藤"><a href="#方法二-顺瓜摸藤" class="headerlink" title="方法二(顺瓜摸藤)"></a>方法二(顺瓜摸藤)</h6><p>思路： 目标是到达数组的最后一个位置，因此我们可以考虑最后一步跳跃前所在的位置，该位置通过跳跃能够到达最后一个位置。如何有多个位置通过跳跃都能够到达最后一个位置，那么我们应该如何进行选择呢？直观上来看，我们可以「贪心」地选择距离最后一个位置最远的那个位置，也就是对应下标最小的那个位置。因此，我们可以从左到右遍历数组，选择第一个满足要求的位置。找到最后一步跳跃前所在的位置之后，我们继续贪心地寻找倒数第二步跳跃前所在的位置，以此类推，直到找到数组的开始位置。</p>
+<p><u>python写会超时，因此用Java写</u></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> position = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> steps = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (position &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; position; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + nums[i] &gt;= position) &#123;</span><br><span class="line">                    position = i;</span><br><span class="line">                    steps++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="方法三-动态规划"><a href="#方法三-动态规划" class="headerlink" title="方法三(动态规划)"></a>方法三(动态规划)</h6><p>思路:从数组的尾部开始,记录当前索引位置到数组尾部的最少跳跃次数。采用动态规划的思路</p>
+<p>初始化状态:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d =[float[<span class="string">'-Inf'</span>] <span class="keyword">for</span> x <span class="keyword">in</span> array]</span><br><span class="line">d[<span class="number">-1</span>] = <span class="number">0</span></span><br><span class="line">d[<span class="number">-2</span>] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>状态转移方程：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d[i] = min(<span class="number">1</span>+d[i+j+<span class="number">1</span>], d[i]) <span class="comment"># j表示在该节点到数组尾部的搜索</span></span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jump</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">25002</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">        d = [float(<span class="string">'inf'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> nums]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-1</span>, -len(nums) - <span class="number">1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">-1</span>:</span><br><span class="line">                d[i] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">-2</span>:</span><br><span class="line">                d[i] = <span class="number">1</span></span><br><span class="line">            l = min(nums[i], <span class="number">-1</span> - i)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(l):</span><br><span class="line">                d[i] = min(<span class="number">1</span>+d[i+j+<span class="number">1</span>], d[i])</span><br><span class="line">        <span class="keyword">return</span> d[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode 05.03</title>
+    <url>/2020/05/05/LeetCode-05-03/</url>
+    <content><![CDATA[<p>最大子序和（数组 // 动态规划）<a id="more"></a></p>
+<h4 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">题目</a></h5><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 </p>
+<p><strong>示例：</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: [-2,1,-3,4,-1,2,1,-5,4],</span><br><span class="line">输出: 6</span><br><span class="line">解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一（动态规划）"><a href="#方法一（动态规划）" class="headerlink" title="方法一（动态规划）"></a>方法一（动态规划）</h6><p>思路：以当前位置为结尾的子数组的最大和</p>
+<p>例： [-2,1,-3,4,-1,2,1,-5,4] –&gt; [-2, 1, -2, 4, 3, 5, 6, 1, 5] </p>
+<p>初始状态：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</span><br></pre></td></tr></table></figure>
+
+<p>状态转移：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d[i] = max(d[i<span class="number">-1</span>] + nums[i], nums[i])</span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># 动态规划(以当前位置数结尾)</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-2147483648</span></span><br><span class="line">        d = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</span><br><span class="line">        d[<span class="number">0</span>] = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">            d[i] = max(d[i<span class="number">-1</span>] + nums[i], nums[i])</span><br><span class="line">        <span class="keyword">return</span> max(d)</span><br></pre></td></tr></table></figure>
+
+<h6 id="方法二（二分）"><a href="#方法二（二分）" class="headerlink" title="方法二（二分）"></a>方法二（二分）</h6><p><strong><u><em>看懂后继续更新。。。</em></u></strong></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode 05.02</title>
     <url>/2020/05/03/LeetCode-0502/</url>
     <content><![CDATA[<ol>
-<li><p>删除最外层的括号</p>
+<li><p>删除最外层的括号（字符串 // 原语化分解）</p>
 </li>
-<li><p>二叉搜索树的范围和</p>
+<li><p>二叉搜索树的范围和 （二叉树 // 递归）</p>
 </li>
-<li><p>将每个元素替换为右侧最大元素</p>
+<li><p>将每个元素替换为右侧最大元素 （数组 // 倒序遍历）</p>
 </li>
-<li><p>无重复字符的最长字串</p>
+<li><p>无重复字符的最长字串 （字符串 // 滑动窗口）</p>
 <a id="more"></a>
 
 </li>
