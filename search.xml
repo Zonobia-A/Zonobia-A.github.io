@@ -1,6 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>leetcode二叉树</title>
+    <url>/2020/05/31/leetcode%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>二叉树</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode哈希表</title>
+    <url>/2020/05/31/leetcode%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<p>哈希表</p>
+<ul>
+<li>数对和</li>
+<li>出现次数最多的子树元素和</li>
+<li>和可被 K 整除的子数组</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="数对和"><a href="#数对和" class="headerlink" title="数对和"></a>数对和</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/pairs-with-sum-lcci/" target="_blank" rel="noopener">题目</a></h5><p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: nums = [5,6,5], target = 11</span><br><span class="line">输出: [[5,6]]</span><br><span class="line"></span><br><span class="line">输入: nums = [5,6,5,6], target = 11</span><br><span class="line">输出: [[5,6],[5,6]]</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><p>思路：</p>
+<ol>
+<li>用哈希表记录每个元素的出现次数</li>
+<li>遍历数组，当前哈希表中该键值于(target-该值)的value减一，然后判断两个键值是否均<strong>大于等于</strong>0，如果是，则说明还存在数对，记录到最终结果中</li>
+</ol>
+<p>注意：大于等于；先减一，后判断</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pairSums</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res = []</span><br><span class="line">        record = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            record[i] = record.get(i, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            record[i] = record.get(i, <span class="number">0</span>) - <span class="number">1</span></span><br><span class="line">            record[target-i] = record.get(target-i, <span class="number">0</span>) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> record.get(target-i, <span class="number">0</span>) &gt;= <span class="number">0</span> <span class="keyword">and</span> record.get(i, <span class="number">0</span>) &gt;= <span class="number">0</span>:</span><br><span class="line">                res.append([i, target-i])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="出现次数最多的子树元素和"><a href="#出现次数最多的子树元素和" class="headerlink" title="出现次数最多的子树元素和"></a>出现次数最多的子树元素和</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/most-frequent-subtree-sum/" target="_blank" rel="noopener">题目</a></h5><p>给你一个二叉树的根结点，请你找出出现次数最多的子树元素和。一个结点的「子树元素和」定义为以该结点为根的二叉树上所有结点的元素之和（包括结点本身）。</p>
+<p>你需要返回出现次数最多的子树元素和。如果有多个元素出现的次数相同，返回所有出现次数最多的子树元素和（不限顺序）。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">  5</span><br><span class="line"> /  <span class="tag">\</span></span><br><span class="line">2   -3</span><br><span class="line">返回 [2, -3, 4]，所有的值均只出现一次，以任意顺序返回所有值。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  5</span><br><span class="line"> /  <span class="tag">\</span></span><br><span class="line">2   -5</span><br><span class="line">返回 [2]，只有 2 出现两次，-5 只出现 1 次。</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h5><p>思路：</p>
+<ol>
+<li>首先掌握树的遍历，（深度优先[前序，中序，后序]，广度优先），在树专题会有介绍</li>
+<li>遍历过程中记录当前数的和，可表示为（树的根节点值+左子树和+右子树和），用哈希表存储</li>
+<li>对比哈希表中的value值，将所有最大值的保存至结果</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findFrequentTreeSum</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        res = &#123;&#125;</span><br><span class="line">        ret = []</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            sum_now = dfs(root.left) + dfs(root.right) + root.val</span><br><span class="line">            res[sum_now] = res.get(sum_now, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> sum_now</span><br><span class="line">        dfs(root)</span><br><span class="line">        <span class="keyword">for</span> (key, value) <span class="keyword">in</span> res.items():</span><br><span class="line">            <span class="keyword">if</span> value == max(res.values()):</span><br><span class="line">                ret.append(key)</span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度是使用遍历树方法的时间复杂度</p>
+<p>空间复杂度是O(N)</p>
+<hr>
+<h4 id="和可被-K-整除的子数组"><a href="#和可被-K-整除的子数组" class="headerlink" title="和可被 K 整除的子数组"></a>和可被 K 整除的子数组</h4><h5 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">题目</a></h5><p>给定一个整数数组和一个整数 <strong>k，</strong>你需要找到该数组中和为 <strong>k</strong> 的连续的子数组的个数。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入:nums = [1,1,1], k = 2</span><br><span class="line">输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h5><p>思路：</p>
+<ol>
+<li>利用前缀和可以优化时间复杂度</li>
+<li>利用哈希表可以很轻松的记录sum-k的键值出现多少次</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subarraySum</span><span class="params">(self, nums: List[int], k: int)</span> -&gt; int:</span></span><br><span class="line">        hashmap = &#123;<span class="number">0</span>:<span class="number">1</span>&#125;</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        sums = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            sums += nums[i]</span><br><span class="line">            <span class="keyword">if</span> sums-k <span class="keyword">in</span> hashmap:</span><br><span class="line">                count = count + hashmap[sums-k]</span><br><span class="line">            <span class="keyword">if</span> sums <span class="keyword">in</span> hashmap:</span><br><span class="line">                hashmap[sums] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                hashmap[sums] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+
+<p><em>注意仔细理解<code>hashmap = {0:1}</code>（考虑了前缀和刚好是k），必要的话可以举例。</em></p>
+<p>时间复杂度是O(N)</p>
+<p>空间复杂度是O(N)</p>
+<p><u>未完待续</u></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>哈希表</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode分情况讨论</title>
+    <url>/2020/05/31/leetcode%E5%88%86%E6%83%85%E5%86%B5%E8%AE%A8%E8%AE%BA/</url>
+    <content><![CDATA[<p>分情况讨论</p>
+<ul>
+<li>井字游戏</li>
+<li>递减元素使数组呈锯齿状</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="井字游戏"><a href="#井字游戏" class="headerlink" title="井字游戏"></a>井字游戏</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/tic-tac-toe-lcci/" target="_blank" rel="noopener">题目</a></h5><p>设计一个算法，判断玩家是否赢了井字游戏。输入是一个 N x N 的数组棋盘，由字符” “，”X”和”O”组成，其中字符” “代表一个空位。</p>
+<p>以下是井字游戏的规则：</p>
+<ul>
+<li>玩家轮流将字符放入空位（” “）中。</li>
+<li>第一个玩家总是放字符”O”，且第二个玩家总是放字符”X”。</li>
+<li>“X”和”O”只允许放置在空位中，不允许对已放有字符的位置进行填充。</li>
+<li>当有N个相同（且非空）的字符填充任何行、列或对角线时，游戏结束，对应该字符的玩家获胜。</li>
+<li>当所有位置非空时，也算为游戏结束。</li>
+<li>如果游戏结束，玩家不允许再放置字符。</li>
+</ul>
+<p>如果游戏存在获胜者，就返回该游戏的获胜者使用的字符（”X”或”O”）；如果游戏以平局结束，则返回 “Draw”；如果仍会有行动（游戏未结束），则返回 “Pending”。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入： board = ["O X"," XO","X O"]</span><br><span class="line">输出： "X"</span><br><span class="line"></span><br><span class="line">输入： board = ["OOX","XXO","OXO"]</span><br><span class="line">输出： "Draw"</span><br><span class="line">解释： 没有玩家获胜且不存在空位</span><br><span class="line"></span><br><span class="line">输入： board = ["OOX","XXO","OX "]</span><br><span class="line">输出： "Pending"</span><br><span class="line">解释： 没有玩家获胜且仍存在空位</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><p>思路：</p>
+<p>本题一共有四种情况</p>
+<ul>
+<li>“X”获胜</li>
+<li>“O”获胜</li>
+<li>没有玩家获胜且没有空位</li>
+<li>没有玩家获胜有空位</li>
+</ul>
+<p><strong>我们将X替换为-1，O替换为1，对数组的行，列，对角线求和。如果出现-3或3则判定X或O获胜；若没有出现，则进一步判定空位是否存在</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tictactoe</span><span class="params">(self, board: List[str])</span> -&gt; str:</span></span><br><span class="line">    n = len(board)</span><br><span class="line">    arr = [[<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> board] <span class="keyword">for</span> y <span class="keyword">in</span> range(len(board))] </span><br><span class="line">    raw = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> board]</span><br><span class="line">    col = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> board]</span><br><span class="line">    left_right = <span class="number">0</span></span><br><span class="line">    right_left = <span class="number">0</span></span><br><span class="line">    ending = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">for</span> i,line <span class="keyword">in</span> enumerate(board):</span><br><span class="line">        <span class="keyword">for</span> j, ch <span class="keyword">in</span> enumerate(line):</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">'O'</span>:</span><br><span class="line">                arr[i][j] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">'X'</span>:</span><br><span class="line">                arr[i][j] = <span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ending = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        raw[i] = sum(arr[i])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        left_right += arr[i][i]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        right_left += arr[i][len(arr)-i<span class="number">-1</span>]</span><br><span class="line">    arr = [[row[i] <span class="keyword">for</span> row <span class="keyword">in</span> arr] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr[<span class="number">0</span>]))]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        col[i] = sum(arr[i])</span><br><span class="line">    X = raw + col</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (n <span class="keyword">in</span> raw) <span class="keyword">or</span> (n <span class="keyword">in</span> col) <span class="keyword">or</span> (left_right == n) <span class="keyword">or</span> (right_left == n):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'O'</span></span><br><span class="line">    <span class="keyword">if</span> (-n <span class="keyword">in</span> raw) <span class="keyword">or</span> (-n <span class="keyword">in</span> col) <span class="keyword">or</span> (left_right == -n) <span class="keyword">or</span> (right_left == -n):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'X'</span></span><br><span class="line">    <span class="keyword">if</span> ending == <span class="literal">False</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Pending'</span></span><br><span class="line">    <span class="keyword">if</span> ending == <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Draw'</span></span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(n^2),空间复杂度O(n)</p>
+<hr>
+<h4 id="递减元素使数组呈锯齿状"><a href="#递减元素使数组呈锯齿状" class="headerlink" title="递减元素使数组呈锯齿状"></a>递减元素使数组呈锯齿状</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/decrease-elements-to-make-array-zigzag/" target="_blank" rel="noopener">题目</a></h5><p>给你一个整数数组 nums，每次 操作 会从中选择一个元素并 将该元素的值减少 1。</p>
+<p>如果符合下列情况之一，则数组 A 就是 锯齿数组：</p>
+<ul>
+<li>每个偶数索引对应的元素都大于相邻的元素，即 A[0] &gt; A[1] &lt; A[2] &gt; A[3] &lt; A[4] &gt; …</li>
+<li>或者，每个奇数索引对应的元素都大于相邻的元素，即 A[0] &lt; A[1] &gt; A[2] &lt; A[3] &gt; A[4] &lt; …</li>
+</ul>
+<p>返回将数组 nums 转换为锯齿数组所需的最小操作次数。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入：nums = [1,2,3]</span><br><span class="line">输出：2</span><br><span class="line">解释：我们可以把 2 递减到 0，或把 3 递减到 1。</span><br><span class="line"></span><br><span class="line">输入：nums = [9,6,1,6,2]</span><br><span class="line">输出：4</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h5><p>思路：分情况讨论奇数位置和偶数位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">movesToMakeZigzag</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        ans1, ans2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="comment"># 奇数位置</span></span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                d1 = nums[i] - nums[i - <span class="number">1</span>] + <span class="number">1</span> <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] &gt;= nums[i - <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">                d2 = nums[i] - nums[i + <span class="number">1</span>] + <span class="number">1</span> <span class="keyword">if</span> i &lt; n - <span class="number">1</span> <span class="keyword">and</span> nums[i] &gt;= nums[i + <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">                ans1 += max(d1, d2)</span><br><span class="line">            <span class="comment"># 偶数位置</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d1 = nums[i] - nums[i - <span class="number">1</span>] + <span class="number">1</span> <span class="keyword">if</span> nums[i] &gt;= nums[i - <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">                d2 = nums[i] - nums[i + <span class="number">1</span>] + <span class="number">1</span> <span class="keyword">if</span> i &lt; n - <span class="number">1</span> <span class="keyword">and</span> nums[i] &gt;= nums[i + <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">                ans2 += max(d1, d2)</span><br><span class="line">        <span class="keyword">return</span> min(ans1, ans2)</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(N)</p>
+<p>空间复杂度O(1)</p>
+<p><u>未完待续</u></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>数组</category>
+        <category>分情况</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>数组</tag>
+        <tag>分情况</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode动态规划</title>
+    <url>/2020/05/31/leetcode%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
+    <content><![CDATA[<p>LeetCode动态规划题解</p>
+<ul>
+<li>打家劫舍</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍"></a>打家劫舍</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/house-robber/" target="_blank" rel="noopener">题目</a></h5><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</strong></p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 <strong>不触动警报装置的情况下</strong> ，一夜之内能够偷窃到的最高金额。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: [1,2,3,1]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。</span><br><span class="line">     偷窃到的最高金额 = 1 + 3 = 4 。</span><br><span class="line">     </span><br><span class="line">输入: [2,7,9,3,1]</span><br><span class="line">输出: 12</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。</span><br><span class="line">     偷窃到的最高金额 = 2 + 9 + 1 = 12 。</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h6><p>思路：遍历数组，计算偷盗当前房屋的最大价值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> len(nums):</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    d = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums]</span><br><span class="line">    <span class="keyword">for</span> index, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">        <span class="keyword">if</span> index == <span class="number">0</span> <span class="keyword">or</span> index == <span class="number">1</span>:</span><br><span class="line">            d[index] = num</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(index<span class="number">-1</span>):</span><br><span class="line">                d[index] = max(d[index], d[i]+num)</span><br><span class="line">    <span class="keyword">return</span> max(d)</span><br></pre></td></tr></table></figure>
+
+<p>该方法的时间复杂度是O(n^2),空间复杂度是O(n)</p>
+<h6 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h6><p>思路：遍历数组，偷或不偷当前房屋的最大价值，注重与方法一思路上是不一样的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span>    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> len(nums):</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> len(nums) == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">    y = nums[<span class="number">0</span>]</span><br><span class="line">    n = max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, len(nums)):</span><br><span class="line">        temp = n</span><br><span class="line">        n = max(y+nums[i], n)</span><br><span class="line">        y = temp</span><br><span class="line">    <span class="keyword">return</span> n</span><br></pre></td></tr></table></figure>
+
+<p>该方法的时间复杂度是O(n)，空间复杂度是O(1)</p>
+<p><em>总结：方法二的时间复杂度更低，且使用了滚动数组的形式降低了空间复杂度</em></p>
+<p><u>未完待续</u></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode 05.05</title>
     <url>/2020/05/05/LeetCode-05-05/</url>
     <content><![CDATA[<p>验证二插搜索树（树 // 递归 // 中序遍历）<a id="more"></a></p>
