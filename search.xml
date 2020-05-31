@@ -1,16 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>leetcode丑数</title>
+    <url>/2020/05/31/leetcode%E4%B8%91%E6%95%B0/</url>
+    <content><![CDATA[<p>丑数</p>
+<ul>
+<li>第 k 个数</li>
+</ul>
+<a id="more"></a>
+
+<p>持续更新中。。。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>丑数</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode二分查找</title>
+    <url>/2020/05/31/leetcode%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<p>二分查找</p>
+<ul>
+<li>寻找重复数</li>
+</ul>
+<a id="more"></a>
+
+<p>持续更新中。。。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>二分查找</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode链表</title>
+    <url>/2020/05/31/leetcode%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<p>链表</p>
+<ul>
+<li>奇偶链表</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="奇偶链表"><a href="#奇偶链表" class="headerlink" title="奇偶链表"></a>奇偶链表</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/odd-even-linked-list/" target="_blank" rel="noopener">题目</a></h5><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。</p>
+<p>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</span><br><span class="line">输出: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</span><br><span class="line"></span><br><span class="line">输入: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL </span><br><span class="line">输出: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><p>思路：将奇节点放在一个链表里，偶链表放在另一个链表里。然后把偶链表接在奇链表的尾部。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">oddEvenList</span><span class="params">(self, head: ListNode)</span> -&gt; ListNode:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        cur = head</span><br><span class="line">        odd = ListNode(<span class="literal">None</span>)</span><br><span class="line">        cur_odd = odd</span><br><span class="line">        eve = ListNode(<span class="literal">None</span>)</span><br><span class="line">        cur_eve = eve</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            node = ListNode(cur.val)</span><br><span class="line">            cur_odd.next = node</span><br><span class="line">            cur_odd = cur_odd.next</span><br><span class="line">            cur = cur.next</span><br><span class="line">            <span class="keyword">if</span> cur:</span><br><span class="line">                node = ListNode(cur.val)</span><br><span class="line">                cur_eve.next = node</span><br><span class="line">                cur_eve = cur_eve.next</span><br><span class="line">                cur = cur.next</span><br><span class="line">        cur_odd.next = eve.next</span><br><span class="line">        <span class="keyword">return</span> odd.next</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(1)</p>
+<hr>
+<p>未完待续。。。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode前缀和</title>
+    <url>/2020/05/31/leetcode%E5%89%8D%E7%BC%80%E5%92%8C/</url>
+    <content><![CDATA[<p>前缀和</p>
+<ul>
+<li>和可被 K 整除的子数组（在哈希专题可以找到）</li>
+<li>大小为 K 且平均值大于等于阈值的子数组数目</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="大小为-K-且平均值大于等于阈值的子数组数目"><a href="#大小为-K-且平均值大于等于阈值的子数组数目" class="headerlink" title="大小为 K 且平均值大于等于阈值的子数组数目"></a>大小为 K 且平均值大于等于阈值的子数组数目</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/" target="_blank" rel="noopener">题目</a></h5><p>给你一个整数数组 <code>arr</code> 和两个整数 <code>k</code> 和 <code>threshold</code> 。</p>
+<p>请你返回长度为 <code>k</code> 且平均值大于等于 <code>threshold</code> 的子数组数目。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入：arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4</span><br><span class="line">输出：3</span><br><span class="line">解释：子数组 [2,5,5],[5,5,5] 和 [5,5,8] 的平均值分别为 4，5 和 6 。其他长度为 3 的子数组的平均值都小于 4 （threshold 的值)。</span><br><span class="line"></span><br><span class="line">输入：arr = [1,1,1,1,1], k = 1, threshold = 0</span><br><span class="line">输出：5</span><br><span class="line"></span><br><span class="line">输入：arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5</span><br><span class="line">输出：6</span><br><span class="line">解释：前 6 个长度为 3 的子数组平均值都大于 5 。注意平均值不是整数。</span><br><span class="line"></span><br><span class="line">输入：arr = [7,7,7,7,7,7,7], k = 7, threshold = 7</span><br><span class="line">输出：1</span><br><span class="line"></span><br><span class="line">输入：arr = [4,4,4,4], k = 4, threshold = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><p>思路：做子数组时优先考虑前缀和和哈希表，前缀和能减少时间复杂夫</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numOfSubarrays</span><span class="params">(self, arr: List[int], k: int, threshold: int)</span> -&gt; int:</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        p = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(len(arr)+<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(arr):</span><br><span class="line">            p[i+<span class="number">1</span>] = p[i] + num</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k, len(p)):</span><br><span class="line">            dec = p[i] - p[i-k]</span><br><span class="line">            avg = dec / k</span><br><span class="line">            <span class="keyword">if</span> avg &gt;= threshold:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(N)</p>
+<hr>
+<p><u>未完待续。。。</u></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>前缀和</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode栈</title>
+    <url>/2020/05/31/leetcode%E6%A0%88/</url>
+    <content><![CDATA[<p>栈</p>
+<ul>
+<li><p><u>柱状图最大的矩形</u></p>
+</li>
+<li><p>字符串解码</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="柱状图最大的矩形"><a href="#柱状图最大的矩形" class="headerlink" title="柱状图最大的矩形"></a>柱状图最大的矩形</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">题目</a></h5><p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/histogram.png" alt="img"></p>
+<p>以上是柱状图的示例，其中每个柱子的宽度为 1，给定的高度为 <code>[2,1,5,6,2,3]</code>。</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/histogram_area.png" alt="img"></p>
+<p>阴影部分为所能勾勒出的最大矩形面积，其面积为 <code>10</code> 个单位。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: [2,1,5,6,2,3]</span><br><span class="line">输出: 10</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一（动态规划）"><a href="#方法一（动态规划）" class="headerlink" title="方法一（动态规划）"></a>方法一（动态规划）</h6><p>思路：</p>
+<ol>
+<li>初始化max_A为0</li>
+<li>遍历数组，遍历到每一个数组时，去判断当前位置能围成的最大的矩形</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestRectangleArea</span><span class="params">(self, heights: List[int])</span> -&gt; int:</span></span><br><span class="line">        max_a = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(heights)):</span><br><span class="line">            max_a = max(max_a, heights[i])</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                max_a = max((i-j+<span class="number">1</span>) * min(heights[j:i+<span class="number">1</span>]), max_a)</span><br><span class="line">        <span class="keyword">return</span> max_a</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(n^2)</p>
+<p>空间复杂度：O(1)</p>
+<h6 id="方法二（单调栈）"><a href="#方法二（单调栈）" class="headerlink" title="方法二（单调栈）"></a>方法二（单调栈）</h6><p>思路：遍历高度数组。如果当前h[i]比栈顶元素要大，则将当前遍历到的h[i]入栈；否则将栈顶元素出栈，并计算其高度下围成的矩形面积。重复这一过程，直到栈空</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestRectangleArea</span><span class="params">(self, heights: List[int])</span> -&gt; int:</span></span><br><span class="line">        n = len(heights)</span><br><span class="line">        stack = []</span><br><span class="line">        left = [<span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> heights]</span><br><span class="line">        right = [n <span class="keyword">for</span> x <span class="keyword">in</span> heights]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">while</span> stack <span class="keyword">and</span> heights[stack[<span class="number">-1</span>]] &gt;= heights[i]:</span><br><span class="line">                right[stack[<span class="number">-1</span>]] = i</span><br><span class="line">                stack.pop()</span><br><span class="line">            left[i] = stack[<span class="number">-1</span>] <span class="keyword">if</span> stack <span class="keyword">else</span> <span class="number">-1</span></span><br><span class="line">            stack.append(i)</span><br><span class="line">        ans = max((right[i] - left[i] - <span class="number">1</span>) * heights[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)) <span class="keyword">if</span> n &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(N)</p>
+<hr>
+<h4 id="字符串解码"><a href="#字符串解码" class="headerlink" title="字符串解码"></a>字符串解码</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/decode-string/" target="_blank" rel="noopener">题目</a></h5><p>给定一个经过编码的字符串，返回它解码后的字符串。</p>
+<p>编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。</p>
+<p>你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。</p>
+<p>此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 <code>3a</code> 或 <code>2[4]</code> 的输入。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">s = "3[a]2[bc]", 返回 "aaabcbc".</span><br><span class="line">s = "3[a2[c]]", 返回 "accaccacc".</span><br><span class="line">s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一（辅助栈）"><a href="#方法一（辅助栈）" class="headerlink" title="方法一（辅助栈）"></a>方法一（辅助栈）</h6><p>思路：</p>
+<ol>
+<li>定义一个辅助栈用来存放<code>[</code>前读到的数字（重复的倍数）和在这之前解码的字符串</li>
+<li>遍历字符串，当一直是数字时，记录数字的值；当遇到<code>[</code>时，则将已读取的数字和当前解码出的字符串入栈，当读取的时字符时，记录下字符的值；当读取<code>]</code>时，将栈顶元素出栈，此时将保存的倍数及当前读取的字符串相乘加入已解码的字符串。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decodeString</span><span class="params">(self, s: str)</span> -&gt; str:</span></span><br><span class="line">        <span class="comment"># 辅助栈</span></span><br><span class="line">        stack, res = [], <span class="string">""</span></span><br><span class="line">        multi = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> c == <span class="string">'['</span>:</span><br><span class="line">                stack.append([multi, res])</span><br><span class="line">                res, multi = <span class="string">""</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">elif</span> c == <span class="string">']'</span>:</span><br><span class="line">                last_multi, last_res = stack.pop()</span><br><span class="line">                res = last_res + last_multi * res</span><br><span class="line">            <span class="keyword">elif</span> <span class="string">'0'</span> &lt;= c &lt;= <span class="string">'9'</span>:</span><br><span class="line">                multi = <span class="number">10</span> * multi + int(c)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += c</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度: O(N)</p>
+<p>空间复杂度: O(N)</p>
+<h6 id="方法二（递归）"><a href="#方法二（递归）" class="headerlink" title="方法二（递归）"></a><u>方法二（递归）</u></h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decodeString</span><span class="params">(self, s: str)</span> -&gt; str:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(s, i)</span>:</span></span><br><span class="line">            res, multi = <span class="string">""</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; len(s):</span><br><span class="line">                <span class="keyword">if</span> <span class="string">'0'</span> &lt;= s[i] &lt;= <span class="string">'9'</span>:</span><br><span class="line">                    multi = <span class="number">10</span> * multi + int(s[i])</span><br><span class="line">                <span class="keyword">elif</span> s[i] == <span class="string">'['</span>:</span><br><span class="line">                    i, tmp = dfs(s, i+<span class="number">1</span>)</span><br><span class="line">                    res = res + multi * tmp</span><br><span class="line">                    multi = <span class="number">0</span></span><br><span class="line">                <span class="keyword">elif</span> s[i] == <span class="string">']'</span>:</span><br><span class="line">                    <span class="keyword">return</span> i, res</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res += s[i]</span><br><span class="line">                i+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">return</span> dfs(s, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度: O(N)</p>
+<p>空间复杂度: O(N)</p>
+<hr>
+<p>未完待续。。。</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>栈</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode二叉树</title>
     <url>/2020/05/31/leetcode%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>二叉树</p>
+<ul>
+<li><u>二叉树的前序遍历</u></li>
+<li><u>重建二叉树</u></li>
+</ul>
+<a id="more"></a>
+
+<h4 id="二叉树的前序遍历"><a href="#二叉树的前序遍历" class="headerlink" title="二叉树的前序遍历"></a>二叉树的前序遍历</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">题目</a></h5><p>给定一个二叉树，返回它的 <em>前序</em> 遍历。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入: [1,null,2,3]  </span><br><span class="line">   1</span><br><span class="line">    <span class="tag">\</span></span><br><span class="line">     2</span><br><span class="line">    /</span><br><span class="line">   3 </span><br><span class="line"></span><br><span class="line">输出: [1,2,3]</span><br></pre></td></tr></table></figure>
+
+<h5 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h5><h6 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h6><p>思路：用递归的思想</p>
+<ol>
+<li>访问根节点</li>
+<li>访问左子树</li>
+<li>访问右子树</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">pT</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">nonlocal</span> res</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            res.append(root.val)</span><br><span class="line">            pT(root.left)</span><br><span class="line">            pT(root.right)</span><br><span class="line">        pT(root)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>其他方法会持续更新。。。</p>
+<hr>
+<h4 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/" target="_blank" rel="noopener">题目</a></h5><p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">前序遍历 preorder = [3,9,20,15,7]</span><br><span class="line">中序遍历 inorder = [9,3,15,20,7]</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / <span class="tag">\</span></span><br><span class="line">  9  20</span><br><span class="line">    /  <span class="tag">\</span></span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一（递归）"><a href="#方法一（递归）" class="headerlink" title="方法一（递归）"></a>方法一（递归）</h6><p>思路：</p>
+<ol>
+<li>根据前序遍历的顺序找出当前树的根节点</li>
+<li>在中序遍历的数组中找出根节点，左边的即为左子树，右边的即为右子树</li>
+<li>递归上述过程</li>
+<li>递归的结束条件是当前序（中序）数组长度为0的时候，返回空</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, preorder: List[int], inorder: List[int])</span> -&gt; TreeNode:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> len(preorder):</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        Tree = TreeNode(preorder[<span class="number">0</span>])</span><br><span class="line">        key = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> index, i <span class="keyword">in</span> enumerate(inorder):</span><br><span class="line">            <span class="keyword">if</span> i == preorder[<span class="number">0</span>]:</span><br><span class="line">                key = index</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        pre_left = preorder[<span class="number">1</span>:key+<span class="number">1</span>]</span><br><span class="line">        pre_right = preorder[key+<span class="number">1</span>:]</span><br><span class="line">        in_left = inorder[:key]</span><br><span class="line">        in_right = inorder[key+<span class="number">1</span>:]</span><br><span class="line">        Tree.left = self.buildTree(pre_left, in_left)</span><br><span class="line">        Tree.right = self.buildTree(pre_right, in_right)</span><br><span class="line">        <span class="keyword">return</span> Tree</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(N)</p>
+<p>空间复杂度O(N)</p>
+<h6 id="方法二（迭代）"><a href="#方法二（迭代）" class="headerlink" title="方法二（迭代）"></a>方法二（迭代）</h6><p>持续更新中。。。</p>
+<hr>
+<p><u>未完待续</u></p>
+]]></content>
       <categories>
         <category>LeetCode</category>
         <category>二叉树</category>
       </categories>
       <tags>
         <tag>LeetCode</tag>
-        <tag>二叉树</tag>
       </tags>
   </entry>
   <entry>
@@ -21,6 +225,7 @@
 <li>数对和</li>
 <li>出现次数最多的子树元素和</li>
 <li>和可被 K 整除的子数组</li>
+<li><u>函数的独占时间</u></li>
 </ul>
 <a id="more"></a>
 
@@ -66,6 +271,32 @@
 <p><em>注意仔细理解<code>hashmap = {0:1}</code>（考虑了前缀和刚好是k），必要的话可以举例。</em></p>
 <p>时间复杂度是O(N)</p>
 <p>空间复杂度是O(N)</p>
+<hr>
+<h4 id="函数的独占时间"><a href="#函数的独占时间" class="headerlink" title="函数的独占时间"></a>函数的独占时间</h4><h5 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/exclusive-time-of-functions/" target="_blank" rel="noopener">题目</a></h5><p>给出一个非抢占单线程CPU的 n 个函数运行日志，找到函数的独占时间。</p>
+<p>每个函数都有一个唯一的 Id，从 0 到 n-1，函数可能会递归调用或者被其他函数调用。</p>
+<p>日志是具有以下格式的字符串：<code>function_id：start_or_end：timestamp</code>。例如：”<code>0:start:0</code>“ 表示函数 0 从 0 时刻开始运行。<code>&quot;0:end:0&quot;</code> 表示函数 0 在 0 时刻结束。</p>
+<p>函数的独占时间定义是在该方法中花费的时间，调用其他函数花费的时间不算该函数的独占时间。你需要根据函数的 Id 有序地返回每个函数的独占时间。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">n = 2</span><br><span class="line">logs = </span><br><span class="line">["0:start:0",</span><br><span class="line"> "1:start:2",</span><br><span class="line"> "1:end:5",</span><br><span class="line"> "0:end:6"]</span><br><span class="line">输出:[3, 4]</span><br><span class="line">说明：</span><br><span class="line">函数 0 在时刻 0 开始，在执行了  2个时间单位结束于时刻 1。</span><br><span class="line">现在函数 0 调用函数 1，函数 1 在时刻 2 开始，执行 4 个时间单位后结束于时刻 5。</span><br><span class="line">函数 0 再次在时刻 6 开始执行，并在时刻 6 结束运行，从而执行了 1 个时间单位。</span><br><span class="line">所以函数 0 总共的执行了 2 +1 =3 个时间单位，函数 1 总共执行了 4 个时间单位。</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ol>
+<li>输入的日志会根据时间戳排序，而不是根据日志Id排序。</li>
+<li>你的输出会根据函数Id排序，也就意味着你的输出数组中序号为 0 的元素相当于函数 0 的执行时间。</li>
+<li>两个函数不会在同时开始或结束。</li>
+<li>函数允许被递归调用，直到运行结束。</li>
+<li>1 &lt;= n &lt;= 100</li>
+</ol>
+<h5 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h5><p>思路：</p>
+<ol>
+<li>用栈模拟函数的调用，遇到start的日志时，对应的id入栈；遇到end的日志时，对应的id出栈。栈顶函数是正在执行的函数。</li>
+<li>用哈希表记录每个函数的独占时间，key代表id，value代表时间</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">exclusiveTime</span><span class="params">(self, n: int, logs: List[str])</span> -&gt; List[int]:</span></span><br><span class="line">        L = [log.split(<span class="string">':'</span>) <span class="keyword">for</span> log <span class="keyword">in</span> logs]</span><br><span class="line">        stack, res = [], [<span class="number">0</span>] * n</span><br><span class="line">        prev = <span class="number">-1</span></span><br><span class="line">        start=<span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> (T_id, status, time) <span class="keyword">in</span>  L:</span><br><span class="line">            <span class="keyword">if</span> status == <span class="string">'start'</span>:</span><br><span class="line">                <span class="keyword">if</span> stack:</span><br><span class="line">                    last_id, last_time = stack[<span class="number">-1</span>]</span><br><span class="line">                    last_id = int(last_id)</span><br><span class="line">                    last_time = int(last_time)</span><br><span class="line">                    <span class="keyword">if</span> start:</span><br><span class="line">                        res[last_id] = res[last_id] + int(time) - last_time</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        res[last_id] = res[last_id] + int(time) - prev  - <span class="number">1</span></span><br><span class="line">                    start = <span class="literal">True</span></span><br><span class="line">                stack.append([T_id, time])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                last_id, last_time = stack[<span class="number">-1</span>]</span><br><span class="line">                last_id = int(last_id)</span><br><span class="line">                last_time = int(last_time)</span><br><span class="line">                <span class="keyword">if</span> start:</span><br><span class="line">                    res[last_id] += int(time) - last_time + <span class="number">1</span>      </span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res[last_id] += int(time) - prev</span><br><span class="line">                start = <span class="literal">False</span></span><br><span class="line">                stack.pop()</span><br><span class="line">                prev = int(time)</span><br><span class="line">        <span class="keyword">return</span> [res[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(N)</p>
+<p>空间复杂度O(N)</p>
+<hr>
 <p><u>未完待续</u></p>
 ]]></content>
       <categories>
@@ -74,7 +305,6 @@
       </categories>
       <tags>
         <tag>LeetCode</tag>
-        <tag>哈希表</tag>
       </tags>
   </entry>
   <entry>
@@ -129,17 +359,15 @@
 
 <p>时间复杂度O(N)</p>
 <p>空间复杂度O(1)</p>
+<hr>
 <p><u>未完待续</u></p>
 ]]></content>
       <categories>
         <category>LeetCode</category>
-        <category>数组</category>
         <category>分情况</category>
       </categories>
       <tags>
         <tag>LeetCode</tag>
-        <tag>数组</tag>
-        <tag>分情况</tag>
       </tags>
   </entry>
   <entry>
@@ -457,6 +685,7 @@
 ]]></content>
       <categories>
         <category>深度学习</category>
+        <category>论文理解</category>
       </categories>
       <tags>
         <tag>深度学习</tag>
@@ -509,6 +738,7 @@
 </ol>
 ]]></content>
       <categories>
+        <category>算法实现</category>
         <category>tensorflow</category>
       </categories>
       <tags>
@@ -567,7 +797,6 @@
         <category>tensorflow</category>
       </categories>
       <tags>
-        <tag>tensorflow</tag>
         <tag>论文复现</tag>
       </tags>
   </entry>
@@ -593,11 +822,10 @@
 <p>axes：整数或整数迭代。要反转的轴</p>
 ]]></content>
       <categories>
-        <category>keras</category>
         <category>深度学习</category>
+        <category>keras</category>
       </categories>
       <tags>
-        <tag>keras</tag>
         <tag>深度学习</tag>
       </tags>
   </entry>

@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,二叉树," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -105,15 +105,16 @@
 
 
 
+<meta name="description" content="二叉树  二叉树的前序遍历 重建二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode二叉树">
 <meta property="og:url" content="https://zonobia-a.github.io/2020/05/31/leetcode%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Zenobia">
+<meta property="og:description" content="二叉树  二叉树的前序遍历 重建二叉树">
 <meta property="article:published_time" content="2020-05-31T09:32:13.000Z">
-<meta property="article:modified_time" content="2020-05-31T09:32:37.742Z">
+<meta property="article:modified_time" content="2020-05-31T12:16:05.329Z">
 <meta property="article:author" content="Feng Yuan">
 <meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="二叉树">
 <meta name="twitter:card" content="summary">
 
 
@@ -367,7 +368,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-31T17:32:37+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-31T20:16:05+08:00">
                 2020-05-31
               </time>
             
@@ -428,7 +429,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  399
                 </span>
               
 
@@ -465,7 +466,46 @@
       
 
       
-        
+        <p>二叉树</p>
+<ul>
+<li><u>二叉树的前序遍历</u></li>
+<li><u>重建二叉树</u></li>
+</ul>
+<a id="more"></a>
+
+<h4 id="二叉树的前序遍历"><a href="#二叉树的前序遍历" class="headerlink" title="二叉树的前序遍历"></a>二叉树的前序遍历</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">题目</a></h5><p>给定一个二叉树，返回它的 <em>前序</em> 遍历。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,null,2,3]  </span><br><span class="line">   1</span><br><span class="line">    <span class="tag">\</span></span><br><span class="line">     2</span><br><span class="line">    /</span><br><span class="line">   3 </span><br><span class="line"></span><br><span class="line">输出: [1,2,3]</span><br></pre></td></tr></table></figure>
+
+<h5 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h5><h6 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h6><p>思路：用递归的思想</p>
+<ol>
+<li>访问根节点</li>
+<li>访问左子树</li>
+<li>访问右子树</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">pT</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">nonlocal</span> res</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            res.append(root.val)</span><br><span class="line">            pT(root.left)</span><br><span class="line">            pT(root.right)</span><br><span class="line">        pT(root)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>其他方法会持续更新。。。</p>
+<hr>
+<h4 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/" target="_blank" rel="noopener">题目</a></h5><p>输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">前序遍历 preorder = [3,9,20,15,7]</span><br><span class="line">中序遍历 inorder = [9,3,15,20,7]</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / <span class="tag">\</span></span><br><span class="line">  9  20</span><br><span class="line">    /  <span class="tag">\</span></span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure>
+
+<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><h6 id="方法一（递归）"><a href="#方法一（递归）" class="headerlink" title="方法一（递归）"></a>方法一（递归）</h6><p>思路：</p>
+<ol>
+<li>根据前序遍历的顺序找出当前树的根节点</li>
+<li>在中序遍历的数组中找出根节点，左边的即为左子树，右边的即为右子树</li>
+<li>递归上述过程</li>
+<li>递归的结束条件是当前序（中序）数组长度为0的时候，返回空</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, preorder: List[int], inorder: List[int])</span> -&gt; TreeNode:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> len(preorder):</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        Tree = TreeNode(preorder[<span class="number">0</span>])</span><br><span class="line">        key = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> index, i <span class="keyword">in</span> enumerate(inorder):</span><br><span class="line">            <span class="keyword">if</span> i == preorder[<span class="number">0</span>]:</span><br><span class="line">                key = index</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        pre_left = preorder[<span class="number">1</span>:key+<span class="number">1</span>]</span><br><span class="line">        pre_right = preorder[key+<span class="number">1</span>:]</span><br><span class="line">        in_left = inorder[:key]</span><br><span class="line">        in_right = inorder[key+<span class="number">1</span>:]</span><br><span class="line">        Tree.left = self.buildTree(pre_left, in_left)</span><br><span class="line">        Tree.right = self.buildTree(pre_right, in_right)</span><br><span class="line">        <span class="keyword">return</span> Tree</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度O(N)</p>
+<p>空间复杂度O(N)</p>
+<h6 id="方法二（迭代）"><a href="#方法二（迭代）" class="headerlink" title="方法二（迭代）"></a>方法二（迭代）</h6><p>持续更新中。。。</p>
+<hr>
+<p><u>未完待续</u></p>
+
       
     </div>
     
@@ -518,8 +558,6 @@
           
             <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
           
-            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
-          
         </div>
       
 
@@ -540,6 +578,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/31/leetcode%E6%A0%88/" rel="prev" title="leetcode栈">
+                leetcode栈 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -594,8 +636,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -614,7 +665,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +676,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -636,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -695,6 +746,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#二叉树的前序遍历"><span class="nav-number">1.</span> <span class="nav-text">二叉树的前序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题"><span class="nav-number">1.2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方法一"><span class="nav-number">1.2.1.</span> <span class="nav-text">方法一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重建二叉树"><span class="nav-number">2.</span> <span class="nav-text">重建二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#题解"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方法一（递归）"><span class="nav-number">2.2.1.</span> <span class="nav-text">方法一（递归）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法二（迭代）"><span class="nav-number">2.2.2.</span> <span class="nav-text">方法二（迭代）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -729,7 +796,7 @@
     </span>
    	<div class="theme-info">
 	<div class="powered-by"></div>
-	<span class="post-count">博客全站共11.4k字</span>
+	<span class="post-count">博客全站共14k字</span>
 </div>
   
 </div>
