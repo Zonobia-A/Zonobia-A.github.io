@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode," />
+  <meta name="keywords" content="kaggle," />
 
 
 
@@ -105,17 +105,19 @@
 
 
 
-<meta name="description" content="45.跳跃游戏（数组 &#x2F;&#x2F; 动态规划 &#x2F;&#x2F; 贪心）">
+<meta name="description" content="手写体识别 ｜ 入门 digit-recognizer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 05.04">
-<meta property="og:url" content="https://zonobia-a.github.io/2020/05/05/LeetCode-05-04/index.html">
+<meta property="og:title" content="digit_recognizer">
+<meta property="og:url" content="https://zonobia-a.github.io/2020/12/29/digit-recognizer/index.html">
 <meta property="og:site_name" content="Zenobia">
-<meta property="og:description" content="45.跳跃游戏（数组 &#x2F;&#x2F; 动态规划 &#x2F;&#x2F; 贪心）">
-<meta property="article:published_time" content="2020-05-05T05:43:07.000Z">
-<meta property="article:modified_time" content="2020-05-05T05:44:57.363Z">
+<meta property="og:description" content="手写体识别 ｜ 入门 digit-recognizer">
+<meta property="og:image" content="https://i.loli.net/2020/12/29/stPSezJQxm6wUhT.png">
+<meta property="article:published_time" content="2020-12-29T14:38:48.000Z">
+<meta property="article:modified_time" content="2020-12-29T14:47:23.138Z">
 <meta property="article:author" content="Feng Yuan">
-<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="kaggle">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/29/stPSezJQxm6wUhT.png">
 
 
 
@@ -145,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="https://zonobia-a.github.io/2020/05/05/LeetCode-05-04/"/>
+  <link rel="canonical" href="https://zonobia-a.github.io/2020/12/29/digit-recognizer/"/>
 
 
 
 
 
-  <title>LeetCode 05.04 | Zenobia</title>
+  <title>digit_recognizer | Zenobia</title>
   
 
 
@@ -323,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zonobia-a.github.io/2020/05/05/LeetCode-05-04/">
+    <link itemprop="mainEntityOfPage" href="https://zonobia-a.github.io/2020/12/29/digit-recognizer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Feng Yuan">
@@ -340,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode 05.04</h1>
+          <h1 class="post-title" itemprop="name headline">digit_recognizer</h1>
         
 
         <div class="post-meta">
@@ -352,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-05T13:43:07+08:00">
-                2020-05-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-29T22:38:48+08:00">
+                2020-12-29
               </time>
             
 
@@ -368,8 +370,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-05T13:44:57+08:00">
-                2020-05-05
+              <time title="更新于" itemprop="dateModified" datetime="2020-12-29T22:47:23+08:00">
+                2020-12-29
               </time>
             
           </span>
@@ -387,8 +389,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
+                  <a href="/categories/kaggle/" itemprop="url" rel="index">
+                    <span itemprop="name">kaggle</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kaggle/CNN/" itemprop="url" rel="index">
+                    <span itemprop="name">CNN</span>
                   </a>
                 </span>
 
@@ -418,7 +431,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  691
+                  1.2k
                 </span>
               
 
@@ -434,7 +447,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  6
                 </span>
               
             </div>
@@ -455,32 +468,53 @@
       
 
       
-        <p>45.跳跃游戏（数组 // 动态规划 // 贪心）<a id="more"></a></p>
-<h4 id="跳跃游戏"><a href="#跳跃游戏" class="headerlink" title="跳跃游戏"></a>跳跃游戏</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/jump-game-ii/" target="_blank" rel="noopener">题目</a></h5><p>给定一个非负整数数组，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
-<p><strong>示例:</strong></p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,3,1,1,4]</span><br><span class="line">输出: 2</span><br><span class="line">解释: 跳到最后一个位置的最小跳跃数是 2。</span><br><span class="line">     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。</span><br></pre></td></tr></table></figure>
+        <p>手写体识别 ｜ 入门</p>
+<p>digit-recognizer</p>
+<a id="more"></a>
 
-<h5 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h5><h6 id="方法一-顺藤摸瓜"><a href="#方法一-顺藤摸瓜" class="headerlink" title="方法一(顺藤摸瓜)"></a>方法一(顺藤摸瓜)</h6><p>思路：贪心地进行正向查找，每次找到可到达的最远位置，就可以在线性时间内得到最少的跳跃次数。 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jump</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        maxPos, end, step = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> maxPos &gt;= i:</span><br><span class="line">                maxPos = max(maxPos, i + nums[i])</span><br><span class="line">                <span class="keyword">if</span> i == end:</span><br><span class="line">                    end = maxPos</span><br><span class="line">                    step += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> step</span><br></pre></td></tr></table></figure>
+<h3 id="问题描述：一个识别数字0～9的练习赛"><a href="#问题描述：一个识别数字0～9的练习赛" class="headerlink" title="问题描述：一个识别数字0～9的练习赛"></a>问题描述：一个识别数字0～9的练习赛</h3><p><img src="https://i.loli.net/2020/12/29/stPSezJQxm6wUhT.png" alt="e201e1cf791d21082ee034415c5d367.png"></p>
+<ul>
+<li>Overview中介绍了问题的描述</li>
+<li>Data里介绍了train，test数据样本，以及最终结果的提交格式</li>
+<li>Notebooks是别人或自己分享的笔记或code</li>
+<li>Discussion是别人对于该问题的一些很好的意见和讨论</li>
+<li>Leaderboard是排名</li>
+<li>Rules是参加本次训练的一个规则</li>
+</ul>
+<hr>
+<h3 id="知识储备"><a href="#知识储备" class="headerlink" title="知识储备"></a>知识储备</h3><ul>
+<li>ML算法基础</li>
+<li>基本的一些编程语言，如Python</li>
+<li>算法库或算法包，如numpy，scipy，scikit-learn，tensorflow</li>
+</ul>
+<p><strong>下面的介绍只会用到tensorflow和numpy的一些知识，都说是入门了</strong></p>
+<h3 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h3><p>每一个digit对应的数据是一个<code>[784, ]</code>–&gt;<code>[28, 28, 1]</code>的矩阵</p>
+<h4 id="train"><a href="#train" class="headerlink" title="train"></a>train</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类型转换函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toInt</span><span class="params">(array)</span>:</span></span><br><span class="line">    array = np.mat(array)</span><br><span class="line">    m, n = np.shape(array)</span><br><span class="line">    newArray = np.zeros((m, n))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m): </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            newArray[i, j] = int(array[i, j])</span><br><span class="line">    <span class="keyword">return</span> newArray</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalizing</span><span class="params">(array)</span>:</span></span><br><span class="line">    m, n = np.shape(array)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> array[i, j] != <span class="number">0</span>:</span><br><span class="line">                array[i, j] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> array</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadTrainData</span><span class="params">()</span>:</span></span><br><span class="line">    l = []</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'./digit_recognizer/train.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        lines = csv.reader(f)</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">            l.append(line)</span><br><span class="line">    <span class="comment"># 由于第一行是train.cvs的描述，所以舍弃第一行</span></span><br><span class="line">    l.remove(l[<span class="number">0</span>])</span><br><span class="line">    l = np.array(l)</span><br><span class="line">    <span class="comment"># cvs文件中的label都是单一数值，在这里转化为onehot形式（7--&gt;[0 0 0 0 0 0 1 0 0 0]）</span></span><br><span class="line">    label = np.zeros([np.shape(l)[<span class="number">0</span>], <span class="number">10</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(np.shape(l)[<span class="number">0</span>]):</span><br><span class="line">        label[i, int(l[i, <span class="number">0</span>])] = <span class="number">1</span></span><br><span class="line">    data = l[:,<span class="number">1</span>:]</span><br><span class="line">    <span class="comment"># 获得数字数据及对应的label</span></span><br><span class="line">    <span class="keyword">return</span> normalizing(toInt(data)), toInt(label)</span><br></pre></td></tr></table></figure>
 
+<p>使用<code>loadTrainData()</code>函数可以提取<code>train.csv</code>中的所有样本，有以下几个注意点需要注意：</p>
+<ul>
+<li>由于第一行是train.cvs的描述，所以舍弃第一行</li>
+<li>cvs文件中的<code>label</code>都是单一数值，在这里转化为onehot形式（<code>7--&gt;[0 0 0 0 0 0 1 0 0 0]</code>）</li>
+<li><code>train.cvs</code>中的数值提取出来后均是<code>string</code>类型，需要转化为<code>Int</code></li>
+<li>训练集中共有42000张digit图像</li>
+</ul>
+<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadTestData</span><span class="params">()</span>:</span></span><br><span class="line">    l = []</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'./digit_recognizer/test.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        lines = csv.reader(f)</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">            l.append(line)</span><br><span class="line">    <span class="comment"># 由于第一行是test.cvs的描述，所以舍弃第一行</span></span><br><span class="line">    l.remove(l[<span class="number">0</span>])</span><br><span class="line">    data = np.array(l)</span><br><span class="line">    <span class="keyword">return</span> normalizing(toInt(data))</span><br></pre></td></tr></table></figure>
 
+<p>使用<code>loadTestData()</code>函数可以提取test.csv`中的所有样本，有以下几个注意点需要注意：</p>
+<ul>
+<li>由于第一行是<code>test.cvs</code>的描述，所以舍弃第一行</li>
+<li>训练集中共有28000张digit图像</li>
+</ul>
+<hr>
+<h3 id="CNN模型构建"><a href="#CNN模型构建" class="headerlink" title="CNN模型构建"></a>CNN模型构建</h3><h4 id="基本模块"><a href="#基本模块" class="headerlink" title="基本模块"></a>基本模块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卷积</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv</span><span class="params">(feature, W, s=<span class="number">1</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.nn.conv2d(feature, W, strides=[<span class="number">1</span>, s, s, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leakey_relu</span><span class="params">(x, alpha)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf.maximum(x, alpha * x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卷积核初始化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variale</span><span class="params">(shape, name)</span>:</span></span><br><span class="line">    init = tf.truncated_normal(shape, stddev=<span class="number">0.01</span>)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(init, name=name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 偏置初始化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape, name)</span>:</span></span><br><span class="line">    init = tf.constant(<span class="number">0.01</span>, shape=shape)</span><br><span class="line">    <span class="keyword">return</span> tf.Variable(init, name=name)</span><br></pre></td></tr></table></figure>
 
-<h6 id="方法二-顺瓜摸藤"><a href="#方法二-顺瓜摸藤" class="headerlink" title="方法二(顺瓜摸藤)"></a>方法二(顺瓜摸藤)</h6><p>思路： 目标是到达数组的最后一个位置，因此我们可以考虑最后一步跳跃前所在的位置，该位置通过跳跃能够到达最后一个位置。如何有多个位置通过跳跃都能够到达最后一个位置，那么我们应该如何进行选择呢？直观上来看，我们可以「贪心」地选择距离最后一个位置最远的那个位置，也就是对应下标最小的那个位置。因此，我们可以从左到右遍历数组，选择第一个满足要求的位置。找到最后一步跳跃前所在的位置之后，我们继续贪心地寻找倒数第二步跳跃前所在的位置，以此类推，直到找到数组的开始位置。</p>
-<p><u>python写会超时，因此用Java写</u></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> position = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> steps = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (position &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; position; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + nums[i] &gt;= position) &#123;</span><br><span class="line">                    position = i;</span><br><span class="line">                    steps++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> steps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="模型构建"><a href="#模型构建" class="headerlink" title="模型构建"></a>模型构建</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(digit)</span>:</span></span><br><span class="line">    <span class="comment"># 第一层卷积核</span></span><br><span class="line">    w1 = weight_variale([<span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">32</span>], name=<span class="string">'w1'</span>)</span><br><span class="line">    b1 = bias_variable([<span class="number">32</span>], name=<span class="string">'b1'</span>)</span><br><span class="line">    c1 = tf.nn.relu(conv(digit, w1) + b1)</span><br><span class="line">    <span class="comment"># 第一层池化层</span></span><br><span class="line">    p1 = tf.nn.max_pool(c1, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span> ,<span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line">    <span class="comment"># 第二层卷积层</span></span><br><span class="line">    w2 = weight_variale([<span class="number">3</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">64</span>], name=<span class="string">'w2'</span>)</span><br><span class="line">    b2 = bias_variable([<span class="number">64</span>], name=<span class="string">'b2'</span>)</span><br><span class="line">    c2 = tf.nn.relu(conv(p1, w2) + b2)</span><br><span class="line">    <span class="comment"># 第二层池化层</span></span><br><span class="line">    p2 = tf.nn.max_pool(c2, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</span><br><span class="line">    <span class="comment"># 将矩阵拉成一个vector</span></span><br><span class="line">    flatten = tf.reshape(p2, [<span class="number">-1</span>, <span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>])</span><br><span class="line">    <span class="comment"># 第一层全连接层</span></span><br><span class="line">    w_fc1 = weight_variale([<span class="number">3136</span>, <span class="number">1024</span>], name=<span class="string">'fc_w1'</span>)</span><br><span class="line">    b_fc1 = bias_variable([<span class="number">1024</span>], name=<span class="string">'fc_b1'</span>)</span><br><span class="line">    fc1 = tf.matmul(flatten, w_fc1) + b_fc1</span><br><span class="line">    fc1 = tf.nn.relu(fc1)</span><br><span class="line"> 		<span class="comment"># 第二层全连接层</span></span><br><span class="line">    w_fc2 = weight_variale([<span class="number">1024</span>, <span class="number">10</span>], name=<span class="string">'fc_w2'</span>)</span><br><span class="line">    b_fc2 = bias_variable([<span class="number">10</span>], name=<span class="string">'fc_b2'</span>)</span><br><span class="line">    fc2 = tf.matmul(fc1, w_fc2) + b_fc2</span><br><span class="line">    fc2 = tf.nn.softmax(fc2)</span><br><span class="line">    <span class="keyword">return</span> fc2</span><br></pre></td></tr></table></figure>
 
+<h4 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">()</span>:</span></span><br><span class="line">    batch_size = <span class="number">3000</span></span><br><span class="line">    epochs = <span class="number">300</span></span><br><span class="line">    <span class="comment"># 占位符</span></span><br><span class="line">    digit_ = tf.placeholder(tf.float32, shape=[<span class="literal">None</span>, width * height * channel])</span><br><span class="line">    digit = tf.reshape(digit_, shape=[<span class="number">-1</span>, width, height, channel])</span><br><span class="line">    y_ = tf.placeholder(tf.float32, shape=[<span class="literal">None</span>, out_class])</span><br><span class="line">    <span class="comment"># 模型预测</span></span><br><span class="line">    pred = model(digit)</span><br><span class="line">    <span class="comment"># 交叉熵损失函数</span></span><br><span class="line">    cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(pred), reduction_indices=[<span class="number">1</span>]))</span><br><span class="line">    <span class="comment"># 优化器</span></span><br><span class="line">    train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">    correct_prediction = tf.equal(tf.argmax(pred, <span class="number">1</span>), tf.argmax(y_, <span class="number">1</span>))</span><br><span class="line">    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line">    saver = tf.train.Saver()</span><br><span class="line">    </span><br><span class="line">    train_data, label = loadTrainData()</span><br><span class="line">    train_size = np.shape(train_data)[<span class="number">0</span>]</span><br><span class="line">    max_batch = (train_size<span class="number">-5000</span>) // batch_size</span><br><span class="line">    best_accuracy = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">        sess.run(tf.global_variables_initializer())</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(epochs):</span><br><span class="line">            <span class="keyword">for</span> idx <span class="keyword">in</span> range(max_batch):</span><br><span class="line">              <span class="comment"># 加载一个batchsize的数据进行模型训练</span></span><br><span class="line">                batch_data = train_data[idx * batch_size : (idx+<span class="number">1</span>) * batch_size, :]</span><br><span class="line">                batch_label = label[idx * batch_size : (idx+<span class="number">1</span>) * batch_size, :]</span><br><span class="line">                _ = sess.run(train_step, feed_dict=&#123;digit_: batch_data, y_: batch_label&#125;)</span><br><span class="line">            <span class="comment"># 验证集确定模型</span></span><br><span class="line">            val_data = train_data[<span class="number">-5000</span>: , :]</span><br><span class="line">            val_label = label[<span class="number">-5000</span> : , :]</span><br><span class="line">            pre_accuracy = sess.run(accuracy, feed_dict=&#123;digit_: val_data, y_: val_label&#125;)</span><br><span class="line">            print(i, pre_accuracy)</span><br><span class="line">            <span class="keyword">if</span> pre_accuracy &gt; best_accuracy:</span><br><span class="line">                saver.save(sess, <span class="string">'./digit_recognizer/model/digit_recognization.ckpt'</span>)</span><br></pre></td></tr></table></figure>
 
+<h4 id="模型测试"><a href="#模型测试" class="headerlink" title="模型测试"></a>模型测试</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">saveResults</span><span class="params">(result)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'./digit_recognizer/result.csv'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        writer = csv.writer(f)</span><br><span class="line">        <span class="keyword">for</span> index,i <span class="keyword">in</span> enumerate(result):</span><br><span class="line">            tmp = [index+<span class="number">1</span>]</span><br><span class="line">            tmp.append(i)</span><br><span class="line">            writer.writerow(tmp)</span><br><span class="line">            </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    test_data = loadTestData()</span><br><span class="line">    digit_ = tf.placeholder(tf.float32, shape=[<span class="literal">None</span>, width * height * channel])</span><br><span class="line">    digit = tf.reshape(digit_, shape=[<span class="number">-1</span>, width, height, channel])</span><br><span class="line">    pred = model(digit)</span><br><span class="line">    saver = tf.train.Saver()</span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">        saver.restore(sess, <span class="string">'./digit_recognizer/model/digit_recognization.ckpt'</span>)</span><br><span class="line">        result = sess.run(pred, feed_dict=&#123;digit_: test_data&#125;)</span><br><span class="line">        result = np.argmax(result, axis=<span class="number">1</span>)</span><br><span class="line">    saveResults(result)</span><br></pre></td></tr></table></figure>
 
-<h6 id="方法三-动态规划"><a href="#方法三-动态规划" class="headerlink" title="方法三(动态规划)"></a>方法三(动态规划)</h6><p>思路:从数组的尾部开始,记录当前索引位置到数组尾部的最少跳跃次数。采用动态规划的思路</p>
-<p>初始化状态:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d =[float[<span class="string">'-Inf'</span>] <span class="keyword">for</span> x <span class="keyword">in</span> array]</span><br><span class="line">d[<span class="number">-1</span>] = <span class="number">0</span></span><br><span class="line">d[<span class="number">-2</span>] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>状态转移方程：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d[i] = min(<span class="number">1</span>+d[i+j+<span class="number">1</span>], d[i]) <span class="comment"># j表示在该节点到数组尾部的搜索</span></span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jump</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">25002</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">        d = [float(<span class="string">'inf'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> nums]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-1</span>, -len(nums) - <span class="number">1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">-1</span>:</span><br><span class="line">                d[i] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">-2</span>:</span><br><span class="line">                d[i] = <span class="number">1</span></span><br><span class="line">            l = min(nums[i], <span class="number">-1</span> - i)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(l):</span><br><span class="line">                d[i] = min(<span class="number">1</span>+d[i+j+<span class="number">1</span>], d[i])</span><br><span class="line">        <span class="keyword">return</span> d[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-
+<p><em>未完待续：后续会进一步进行特征工程，可视化，数据扩充。。。</em></p>
 
       
     </div>
@@ -532,7 +566,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
+            <a href="/tags/kaggle/" rel="tag"><i class="fa fa-tag"></i> kaggle</a>
           
         </div>
       
@@ -545,8 +579,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/05/LeetCode-05-03/" rel="next" title="LeetCode 05.03">
-                <i class="fa fa-chevron-left"></i> LeetCode 05.03
+              <a href="/2020/05/31/leetcode%E4%B8%91%E6%95%B0/" rel="next" title="leetcode丑数">
+                <i class="fa fa-chevron-left"></i> leetcode丑数
               </a>
             
           </div>
@@ -554,10 +588,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/05/LeetCode-05-05/" rel="prev" title="LeetCode 05.05">
-                LeetCode 05.05 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -731,7 +761,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#跳跃游戏"><span class="nav-number">1.</span> <span class="nav-text">跳跃游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解题"><span class="nav-number">1.2.</span> <span class="nav-text">解题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方法一-顺藤摸瓜"><span class="nav-number">1.2.1.</span> <span class="nav-text">方法一(顺藤摸瓜)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法二-顺瓜摸藤"><span class="nav-number">1.2.2.</span> <span class="nav-text">方法二(顺瓜摸藤)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方法三-动态规划"><span class="nav-number">1.2.3.</span> <span class="nav-text">方法三(动态规划)</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述：一个识别数字0～9的练习赛"><span class="nav-number">1.</span> <span class="nav-text">问题描述：一个识别数字0～9的练习赛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#知识储备"><span class="nav-number">2.</span> <span class="nav-text">知识储备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集介绍"><span class="nav-number">3.</span> <span class="nav-text">数据集介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#train"><span class="nav-number">3.1.</span> <span class="nav-text">train</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#test"><span class="nav-number">3.2.</span> <span class="nav-text">test</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN模型构建"><span class="nav-number">4.</span> <span class="nav-text">CNN模型构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本模块"><span class="nav-number">4.1.</span> <span class="nav-text">基本模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型构建"><span class="nav-number">4.2.</span> <span class="nav-text">模型构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型训练"><span class="nav-number">4.3.</span> <span class="nav-text">模型训练</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型测试"><span class="nav-number">4.4.</span> <span class="nav-text">模型测试</span></a></li></ol></li></ol></div>
             
 
           </div>
